@@ -1,3 +1,8 @@
+'''
+This function creates a txt file containing all 460 possible input units as generated
+by the dictionary of nodes algorithm
+'''
+
 import pickle
 
 lista = [['int', 'int', 'int'],

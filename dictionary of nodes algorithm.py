@@ -1,5 +1,8 @@
 '''
-Dicionario de nodes
+This algorithm generates the list of all 460 possible wickelfeatures units to be compared with a given Input
+First, it generates the 260 combinations of features excluding the boundary feature
+Then, it generates the 200 remaining combinations to account for the boundary features
+(All combinations selected by the book)
 '''
 lista_features = ["int","cont","vowel","d1","d2","front","middle","back","b1","b2"]
 #combinacoes possiveis dos fonemas anteriores e posteriores
