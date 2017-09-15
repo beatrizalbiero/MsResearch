@@ -5,6 +5,28 @@ back to a whole string (verb).
 '''
 ##############################################################################################################################################################
 '''
+Vector to string
+'''
+from itertools import compress
+class strector:
+    def __init__(self, filter_list, wickelfeatures_list):
+        self.filter_list = filter_list
+        self.wickelfeatures_list = wickelfeatures_list
+        self.strector = None
+
+    def string2vector(self):
+        self.strector = list(compress(self.wickelfeatures_list, self.filter_list))
+        return self.strector
+
+    @property
+    def countfeatrs(self):
+        countfeatrs = self.filter_list.count(1)
+        return countfeatrs
+
+##############################################################################################################################################################
+
+
+'''
 First of all, I need a text file containing a list of verbs
 '''
 

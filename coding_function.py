@@ -153,10 +153,25 @@ def coding(verb):
     nodes = compare(wickelfeatures_list,table)
     return nodes
 
-s=coding("#adr#")
-'''
-for item in ativa_nodes("#fazer#"):
-    for element in item:
-        print(element)
-'''
-print(s.count(1))
+dar = coding("#dar#")
+
+from itertools import compress
+class strector:
+    def __init__(self, filter_list, wickelfeatures_list):
+        self.filter_list = filter_list
+        self.wickelfeatures_list = wickelfeatures_list
+        self.strector = None
+
+    def string2vector(self):
+        self.strector = list(compress(self.wickelfeatures_list, self.filter_list))
+        return list(self.strector)
+
+    @property
+    def countfeatrs(self):
+        countfeatrs = self.filter_list.count(1)
+        return print(countfeatrs)
+
+Dar = strector(dar,wickelfeatures_list)
+Dar.string2vector()
+Dar.countfeatrs
+type(Dar.strector)
