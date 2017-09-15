@@ -24,9 +24,8 @@ def dictionary(phoneme):
              "v":["cont","b1","front","d1","notboundary"],"f":["cont","b1","front","d2","notboundary"],
              "z":["cont","b1","middle","d1","notboundary"],"s":["cont","b1","middle","d2","notboundary"],
              "j":["cont","b1","back","d1","notboundary"],"x":["cont","b1","back","d2","notboundary"],
-             "v":["cont","b1","front","d1","notboundary"],"f":["cont","b1","front","d2","notboundary"],
              "l":["cont","b2","front","d1","notboundary"],"r":["cont","b2","middle","d1","notboundary"],
-             "a":["vowel","b2","middle","d2","notboundary"],"e":["vowel","b1","front","b1","notboundary"],
+             "a":["vowel","b2","middle","d2","notboundary"],"e":["vowel","b1","front","d1","notboundary"],
              "E":["vowel","b2","front","d2","notboundary"], "i":["vowel","b1","front","d2","notboundary"],
              "o":["vowel","b1","back","d1","notboundary"], "O":["vowel","b2","back","d2","notboundary"],
              "u":["vowel","b1","back","d2","notboundary"]
@@ -155,23 +154,18 @@ def coding(verb):
 
 dar = coding("#dar#")
 
+##############################################################################################################################################################
+
+'''
+string2vector
+This procedure receives a boolean vector of wickelfeatures and returns a string vector of wickelfeatures
+'''
 from itertools import compress
-class strector:
-    def __init__(self, filter_list, wickelfeatures_list):
-        self.filter_list = filter_list
-        self.wickelfeatures_list = wickelfeatures_list
-        self.strector = None
+def vector2string(filter_list,wickelfeatures_list):
+    vecting = list(compress(wickelfeatures_list, filter_list))
+    return vecting
+##############################################################################################################################################################
 
-    def string2vector(self):
-        self.strector = list(compress(self.wickelfeatures_list, self.filter_list))
-        return list(self.strector)
-
-    @property
-    def countfeatrs(self):
-        countfeatrs = self.filter_list.count(1)
-        return print(countfeatrs)
-
-Dar = strector(dar,wickelfeatures_list)
-Dar.string2vector()
-Dar.countfeatrs
-type(Dar.strector)
+Dar = vector2string(dar,wickelfeatures_list)
+Dar
+dar.count(1)
