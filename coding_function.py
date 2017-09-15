@@ -77,7 +77,6 @@ def wickelfeatures(verb):
 '''
 Input nodes "dictionary"
 A list of 460 nodes (wickelfeatures) has been created so we can compare it to the verb wikelfeatures
-WARNING: The list must be in the same diretory
 '''
 import pickle
 with open("nodes.txt", "rb") as file:
@@ -89,7 +88,7 @@ Prep: Prepares the verb for the comparison
 This procedure receives a single wickelfeature and
 returns a table (list) of 16 wickelfeatures that are going to be activated
 (based on McClellands and Rumelharts experiment)
-I need to select the wickelfeatures that are going to be activated by the verb
+I need to select the wickelfeatures that are going to be activated by each trigram
 '''
 
 def prep(lista_wkl):
