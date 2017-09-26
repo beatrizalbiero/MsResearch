@@ -32,17 +32,17 @@ def wickelphone_list (list_verbs):
 from itertools import compress
 import importlib
 import coding_function as cf
-importlib.reload(cf)
+#importlib.reload(cf)
 import pickle
 with open("nodes.txt", "rb") as file:
     wickelfeatures_list = pickle.load(file)
 dar = cf.coding("#dar#")
 dar
-Dar = cf.vector2string(dar)
+Dar = cf.vector2string(dar,wickelfeatures_list)
 Dar
 len(Dar)
 comer = cf.coding("#komer#")
-Comer = cf.vector2string(comer)
+Comer = cf.vector2string(comer,wickelfeatures_list)
 Comer
 
 
@@ -151,8 +151,8 @@ def checkcandidates_beg(vector2string):
                 #print(candidates)
                 candidates2 = candidates2 - d1s
 
-            
-    return
+
+    return ['#'] + candidates1 + candidates2
 
 checkcandidates_beg(Comer)
 ##############################################################################################################################################################
@@ -251,6 +251,7 @@ def checkcandidates_end(vector2string):
     return candidates1 + candidates2 + end
 
 checkcandidates_end(Comer)
+
 ##############################################################################################################################################################
 # '''
 # A procedure that decodes a whole verb if there are less than 4 letters in it:
@@ -274,13 +275,6 @@ Dar = cf.vector2string(dar,wickelfeatures_list)
 Dar_beg = checkcandidates_beg(Dar)
 Dar_beg
 cf.ativate_nodes("#da")
-
-def guessphoneme(beg):
-
-    cf.ativate_nodes(beg)
-
-
-
 
 
 falar = cf.coding("#falar#")
