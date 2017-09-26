@@ -157,7 +157,7 @@ dar = coding("#dar#")
 ##############################################################################################################################################################
 
 '''
-string2vector
+vector2string
 This procedure receives a boolean vector of wickelfeatures and returns a string vector of wickelfeatures
 '''
 from itertools import compress
@@ -165,7 +165,3 @@ def vector2string(filter_list,wickelfeatures_list):
     vecting = list(compress(wickelfeatures_list, filter_list))
     return vecting
 ##############################################################################################################################################################
-
-Dar = vector2string(dar,wickelfeatures_list)
-Dar
-dar.count(1)
