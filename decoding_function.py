@@ -152,7 +152,7 @@ def checkcandidates_beg(vector2string):
                 candidates2 = candidates2 - d1s
 
 
-    return ['#'] + candidates1 + candidates2
+    return "".join(['#'] + candidates1 + candidates2)
 
 checkcandidates_beg(Comer)
 ##############################################################################################################################################################
@@ -184,11 +184,13 @@ def checkcandidates_end(vector2string):
     d2s = MyList('p', 't', 'k', 'f', 's', 'x', 'a', 'E', 'O', 'u','i')
 
     for item in vector2string:
+
         if item[2] == '#':
             if item[0] == 'int':
                 #print(candidates)
                 candidates1 = candidates1 - conts - vowels
             if item[0] == 'cont':
+                print("entrei")
                 candidates1 = candidates1 - ints - vowels
             if item[0] == 'vowel':
                 #print(candidates)
@@ -246,13 +248,13 @@ def checkcandidates_end(vector2string):
                 #print(candidates)
                 candidates2 = candidates2 - d1s
 
-            end = ["#"]
+        
 
-    return candidates1 + candidates2 + end
+    return "".join(candidates1 + candidates2 + ["#"])
 
 checkcandidates_end(Comer)
 
-##############################################################################################################################################################
+# hidden smallbinding#############################################################################################################################################################
 # '''
 # A procedure that decodes a whole verb if there are less than 4 letters in it:
 # '''
