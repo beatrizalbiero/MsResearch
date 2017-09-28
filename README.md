@@ -2,13 +2,13 @@
 
 # Project Summary
 
-This is an attempt at reproducing Rumelhart and McClelland's (1986) connectionist experiment described  in the book Paralell Distributed Processing, chapter "On learning the past tense of english verbs", with Brazilian Portuguese as a target language.
+This is an attempt at reproducing Rumelhart and McClelland's (1986) connectionist experiment described  in the book Paralell Distributed Processing, chapter "On learning the past tense of English verbs", with Brazilian Portuguese as a target language.
 
 In this book, Rumelhart and McClelland describe a new theory of cognition called connectionism that is challenging the idea of symbolic computation that has traditionally been at the center of debate in theoretical discussions about the mind. 
 
 The authors' theory assumes the mind is composed of a great number of elementary units connected in a neural network. Mental processes are interactions between these units which excite and inhibit each other in parallel rather than sequential operations. In this context, knowledge can no longer be thought of as stored in localized structures; instead, it consists of the connections between pairs of units that are distributed throughout the network. 
 
-In the chapter "On learning the past tense of english verbs", Rumelhart and McClelland describe an experiment in which a feedforward neural network was developed in order to find patterns among phonological features between present and past tense forms of english verbs.
+In the chapter "On learning the past tense of English verbs", Rumelhart and McClelland describe an experiment in which a feedforward neural network was developed in order to find patterns among phonological features between present and past tense forms of English verbs.
 
 # Wickelfeatures - Units
 
