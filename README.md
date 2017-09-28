@@ -1,13 +1,18 @@
 # README
 
+# Project Summary
 
 This is an attempt at reproducing Rumelhart and McClelland's (1986) connectionist experiment described  in the book Paralell Distributed Processing, chapter "On learning the past tense of english verbs", with Brazilian Portuguese as a target language.
 
-The coding and decoding functions are still under development.
+In this book, Rumelhart and McClelland describe a new theory of cognition called connectionism that is challenging the idea of symbolic computation that has traditionally been at the center of debate in theoretical discussions about the mind. 
 
-# Wickelfeatures 
+The authors' theory assumes the mind is composed of a great number of elementary units connected in a neural network. Mental processes are interactions between these units which excite and inhibit each other in parallel rather than sequential operations. In this context, knowledge can no longer be thought of as stored in localized structures; instead, it consists of the connections between pairs of units that are distributed throughout the network. 
 
-A phoneme is one of the units of sound that distinguish one word from another in a particular language.
+In the chapter "On learning the past tense of english verbs", Rumelhart and McClelland describe an experiment in which a feedforward neural network was developed in order to find patterns among phonological features between present and past tense forms of english verbs.
+
+# Wickelfeatures - Units
+
+A phoneme can be described as any of the perceptually distinct units of sound in a specified language that distinguish one word from another, for example p, b, d, and t in the English words pad, pat, bad, and bat.
 
 Each phoneme has its own phonological features. According to Rumelhart and McClelland's description, the phoneme 'd', for example, can be characterized by a set of 4 features:  
 
@@ -16,9 +21,9 @@ Each phoneme has its own phonological features. According to Rumelhart and McCle
   - Middle
   - Voiced
 
-In a trigram of phonemes, each phoneme may be ascribed features allowing for 48 possible combinations. A wickelfeature is any one of those combinations.
+In a trigram of phonemes, each phoneme may be ascribed features allowing for 64 possible combinations. A wickelfeature is any one of those combinations.
 
-# Coding and decoding functions 
+# Encoding and decoding functions 
 
 (...)
 
