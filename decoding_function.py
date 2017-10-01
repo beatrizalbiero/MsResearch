@@ -253,7 +253,7 @@ given a set of wickelfeatures and a position(int) in the trigram, returns a phon
 '''
 def checkcandidate(vector2string,position):
     if position not in range(0,3):
-        return print("position must be an integer between 0 and 2")
+        return print("position must be an integer in range (0,3)")
 
     candidates = MyList('b','p','d','t','g','k','m','n','v','f','z','s','j','x','l','r','a','e','E','i', 'o', 'O', 'u')
 
@@ -327,57 +327,12 @@ given a list of wickelfeatures (str), decodes it into phonemes
 def decoding(vector2string):
     firstblock = MyList()
 
-    candidates = MyList('b','p','d','t','g','k','m','n','v','f','z','s','j','x','l','r','a','e','E','i', 'o', 'O', 'u')
+    for wickelfeature in vector2string:
+        for i in range(0,3):
 
-    ints = MyList('b','p','d','t','g','k','m','n')
-    conts = MyList('v','f','z','s','j','x','l','r')
-    vowels = MyList('a','e','E','i', 'o', 'O', 'u')
-    b1s = MyList('b','p','d','t','g','k','v','f','z','s','j','x','e','i','o','u')
-    b2s = MyList('m','n','l','r','a','E','O')
-    fronts = MyList('b','p','v','f','m','l','E','i','e')
-    middles = MyList('d','t','n','z','s','r','a')
-    backs = MyList('g','k','j','x','o', 'O', 'u')
-    d1s = MyList('b','d','g','m','v','z','j','l','o','n','r','e')
-    d2s = MyList('p', 't', 'k', 'f', 's', 'x', 'a', 'E', 'O', 'u','i')
 
-    for item in vector2string:
-        if item[0] == '#':
-            firstblock.append(item)
-    compatible_wickelfeatures =  find_compatible(firstblock,vector2string)
 
-    for item in compatible_wickelfeatures:
-        if item[2] != '#':
-            if item[2] == 'int':
-                #print(candidates)
-                candidates = candidates - conts - vowels
-            if item[2] == 'cont':
-                candidates = candidates - ints - vowels
-            if item[2] == 'vowel':
-                #print(candidates)
-                candidates = candidates - conts - ints
-            if item[2] == 'b1':
-                #print(candidates)
-                candidates = candidates - b2s
-            if item[2] == 'b2':
-                #print(candidates)
-                candidates = candidates - b1s
-            if item[2] == 'front':
-                #print(candidates)
-                candidates = candidates - middles - backs
-            if item[2] == 'middle':
-                #print(candidates)
-                candidates = candidates - fronts - backs
-            if item[2] == 'back':
-                #print(candidates)
-                candidates = candidates - fronts - middles
-            if item[2] == 'd1':
-                #print(candidates)
-                candidates = candidates - d2s
-            if item[2] == 'd2':
-                #print(candidates)
-                candidates = candidates - d1s
-
-    return candidates
+    return decoded
 
 
 decoding(Falar)
