@@ -11,16 +11,6 @@ import pickle
 with open("nodes.txt", "rb") as file:
     wickelfeatures_list = pickle.load(file)
 
-# dar = cf.coding("#dar#")
-# dar
-# Dar = cf.vector2string(dar,wickelfeatures_list)
-# Dar
-# len(Dar)
-# comer = cf.coding("#komer#")
-# Comer = cf.vector2string(comer,wickelfeatures_list)
-# Comer
-
-
 ##############################################################################################################################################################
 
 '''
@@ -41,194 +31,197 @@ class MyList(list):
 A procedure that decodes the first trigram of a verb THIS MIGHT BE USELESS
 '''
 
-# def checkcandidates_beg(vector2string):
-#     candidates1 = MyList('b','p','d','t','g',
-#                 'k','m','n','v','f','z','s',
-#                 'j','x','l','r','a','e','E',
-#                 'i', 'o', 'O', 'u')
-#     candidates2 = MyList('b','p','d','t','g',
-#                 'k','m','n','v','f','z','s',
-#                 'j','x','l','r','a','e','E',
-#                 'i', 'o', 'O', 'u')
-#
-#     ints = MyList('b','p','d','t','g','k','m','n')
-#     conts = MyList('v','f','z','s','j','x','l','r')
-#     vowels = MyList('a','e','E','i', 'o', 'O', 'u')
-#     b1s = MyList('b','p','d','t','g','k','v','f','z','s','j','x','e','i','o','u')
-#     b2s = MyList('m','n','l','r','a','E','O')
-#     fronts = MyList('b','p','v','f','m','l','E','i','e')
-#     middles = MyList('d','t','n','z','s','r','a')
-#     backs = MyList('g','k','j','x','o', 'O', 'u')
-#     d1s = MyList('b','d','g','m','v','z','j','l','o','n','r','e')
-#     d2s = MyList('p', 't', 'k', 'f', 's', 'x', 'a', 'E', 'O', 'u','i')
-#
-#     for item in vector2string:
-#         if item[0] == '#':
-#             if item[1] == 'int':
-#                 #print(candidates)
-#                 candidates1 = candidates1 - conts - vowels
-#             if item[1] == 'cont':
-#                 candidates1 = candidates1 - ints - vowels
-#             if item[1] == 'vowel':
-#                 #print(candidates)
-#                 candidates1 = candidates1 - conts - ints
-#             if item[1] == 'b1':
-#                 #print(candidates)
-#                 candidates1 = candidates1 - b2s
-#             if item[1] == 'b2':
-#                 #print(candidates)
-#                 candidates1 = candidates1 - b1s
-#             if item[1] == 'front':
-#                 #print(candidates)
-#                 candidates1 = candidates1 - middles - backs
-#             if item[1] == 'middle':
-#                 #print(candidates)
-#                 candidates1 = candidates1 - fronts - backs
-#             if item[1] == 'back':
-#                 #print(candidates)
-#                 candidates1 = candidates1 - fronts - middles
-#             if item[1] == 'd1':
-#                 #print(candidates)
-#                 candidates1 = candidates1 - d2s
-#             if item[1] == 'd2':
-#                 #print(candidates)
-#                 candidates1 = candidates1 - d1s
-#             if item[2] == 'int':
-#                 #print(candidates)
-#                 candidates2 = candidates2 - conts - vowels
-#             if item[2] == 'cont':
-#                 candidates2 = candidates2 - ints - vowels
-#             if item[2] == 'vowel':
-#                 #print(candidates)
-#                 candidates2 = candidates2 - conts - ints
-#
-#             if item[2] == 'b1':
-#                 #print(candidates)
-#                 candidates2 = candidates2 - b2s
-#
-#             if item[2] == 'b2':
-#                 #print(candidates)
-#                 candidates2 = candidates2 - b1s
-#             if item[2] == 'front':
-#                 #print(candidates)
-#                 candidates2 = candidates2 - middles - backs
-#             if item[2] == 'middle':
-#                 #print(candidates)
-#                 candidates2 = candidates2 - fronts - backs
-#             if item[2] == 'back':
-#                 #print(candidates)
-#                 candidates2 = candidates2 - fronts - middles
-#
-#             if item[2] == 'd1':
-#                 #print(candidates)
-#                 candidates2 = candidates2 - d2s
-#
-#             if item[2] == 'd2':
-#                 #print(candidates)
-#                 candidates2 = candidates2 - d1s
-#
-#
-#     return "".join(['#'] + candidates1 + candidates2)
-#
-# checkcandidates_beg(Comer)
-# ##############################################################################################################################################################
-# '''
-# A procedure that decodes the last trigram
-# '''
-# ##############################################################################################################################################################
-#
-# def checkcandidates_end(vector2string):
-#
-#     candidates1 = MyList('b','p','d','t','g',
-#                         'k','m','n','v','f','z','s',
-#                         'j','x','l','r','a','e','E',
-#                         'i', 'o', 'O', 'u')
-#
-#     candidates2 = MyList('b','p','d','t','g',
-#                         'k','m','n','v','f','z','s',
-#                         'j','x','l','r','a','e','E',
-#                         'i', 'o', 'O', 'u')
-#     ints = MyList('b','p','d','t','g','k','m','n')
-#     conts = MyList('v','f','z','s','j','x','l','r')
-#     vowels = MyList('a','e','E','i', 'o', 'O', 'u')
-#     b1s = MyList('b','p','d','t','g','k','v','f','z','s','j','x','e','i','o','u')
-#     b2s = MyList('m','n','l','r','a','E','O')
-#     fronts = MyList('b','p','v','f','m','l','E','i','e')
-#     middles = MyList('d','t','n','z','s','r','a')
-#     backs = MyList('g','k','j','x','o', 'O', 'u')
-#     d1s = MyList('b','d','g','m','v','z','j','l','o','n','r','e')
-#     d2s = MyList('p', 't', 'k', 'f', 's', 'x', 'a', 'E', 'O', 'u','i')
-#
-#     for item in vector2string:
-#
-#         if item[2] == '#':
-#             if item[0] == 'int':
-#                 #print(candidates)
-#                 candidates1 = candidates1 - conts - vowels
-#             if item[0] == 'cont':
-#                 print("entrei")
-#                 candidates1 = candidates1 - ints - vowels
-#             if item[0] == 'vowel':
-#                 #print(candidates)
-#                 candidates1 = candidates1 - conts - ints
-#             if item[0] == 'b1':
-#                 #print(candidates)
-#                 candidates1 = candidates1 - b2s
-#             if item[0] == 'b2':
-#                 #print(candidates)
-#                 candidates1 = candidates1 - b1s
-#             if item[0] == 'front':
-#                 #print(candidates)
-#                 candidates1 = candidates1 - middles - backs
-#             if item[0] == 'middle':
-#                 #print(candidates)
-#                 candidates1 = candidates1 - fronts - backs
-#             if item[0] == 'back':
-#                 #print(candidates)
-#                 candidates1 = candidates1 - fronts - middles
-#             if item[0] == 'd1':
-#
-#                 candidates1 = candidates1 - d2s
-#             if item[0] == 'd2':
-#
-#                 candidates1 = candidates1 - d1s
-#             if item[1] == 'int':
-#
-#                 candidates2 = candidates2 - conts - vowels
-#             if item[1] == 'cont':
-#                 candidates2 = candidates2 - ints - vowels
-#             if item[1] == 'vowel':
-#                 candidates2 = candidates2 - conts - ints
-#             if item[1] == 'b1':
-#
-#                 candidates2 = candidates2 - b2s
-#
-#             if item[1] == 'b2':
-#                 #print(candidates)
-#                 candidates2 = candidates2 - b1s
-#             if item[1] == 'front':
-#                 #print(candidates)
-#                 candidates2 = candidates2 - middles - backs
-#             if item[1] == 'middle':
-#                 #print(candidates)
-#                 candidates2 = candidates2 - fronts - backs
-#             if item[1] == 'back':
-#                 #print(candidates)
-#                 candidates2 = candidates2 - fronts - middles
-#
-#             if item[1] == 'd1':
-#                 #print(candidates)
-#                 candidates2 = candidates2 - d2s
-#
-#             if item[1] == 'd2':
-#                 #print(candidates)
-#                 candidates2 = candidates2 - d1s
-#
-#
-#
-#     return "".join(candidates1 + candidates2 + ["#"])
-#
-# checkcandidates_end(Comer)
+def checkcandidates_beg(vector2string):
+    candidates1 = MyList('b','p','d','t','g',
+                'k','m','n','v','f','z','s',
+                'j','x','l','r','a','e','E',
+                'i', 'o', 'O', 'u')
+    candidates2 = MyList('b','p','d','t','g',
+                'k','m','n','v','f','z','s',
+                'j','x','l','r','a','e','E',
+                'i', 'o', 'O', 'u')
+
+    ints = MyList('b','p','d','t','g','k','m','n')
+    conts = MyList('v','f','z','s','j','x','l','r')
+    vowels = MyList('a','e','E','i', 'o', 'O', 'u')
+    b1s = MyList('b','p','d','t','g','k','v','f','z','s','j','x','e','i','o','u')
+    b2s = MyList('m','n','l','r','a','E','O')
+    fronts = MyList('b','p','v','f','m','l','E','i','e')
+    middles = MyList('d','t','n','z','s','r','a')
+    backs = MyList('g','k','j','x','o', 'O', 'u')
+    d1s = MyList('b','d','g','m','v','z','j','l','o','n','r','e')
+    d2s = MyList('p', 't', 'k', 'f', 's', 'x', 'a', 'E', 'O', 'u','i')
+
+    new = []
+
+    for item in vector2string:
+        if item[0] == '#':
+            new.append(item)
+            if item[1] == 'int':
+                #print(candidates)
+                candidates1 = candidates1 - conts - vowels
+            if item[1] == 'cont':
+                candidates1 = candidates1 - ints - vowels
+            if item[1] == 'vowel':
+                #print(candidates)
+                candidates1 = candidates1 - conts - ints
+            if item[1] == 'b1':
+                #print(candidates)
+                candidates1 = candidates1 - b2s
+            if item[1] == 'b2':
+                #print(candidates)
+                candidates1 = candidates1 - b1s
+            if item[1] == 'front':
+                #print(candidates)
+                candidates1 = candidates1 - middles - backs
+            if item[1] == 'middle':
+                #print(candidates)
+                candidates1 = candidates1 - fronts - backs
+            if item[1] == 'back':
+                #print(candidates)
+                candidates1 = candidates1 - fronts - middles
+            if item[1] == 'd1':
+                #print(candidates)
+                candidates1 = candidates1 - d2s
+            if item[1] == 'd2':
+                #print(candidates)
+                candidates1 = candidates1 - d1s
+            if item[2] == 'int':
+                #print(candidates)
+                candidates2 = candidates2 - conts - vowels
+            if item[2] == 'cont':
+                candidates2 = candidates2 - ints - vowels
+            if item[2] == 'vowel':
+                #print(candidates)
+                candidates2 = candidates2 - conts - ints
+
+            if item[2] == 'b1':
+                #print(candidates)
+                candidates2 = candidates2 - b2s
+
+            if item[2] == 'b2':
+                #print(candidates)
+                candidates2 = candidates2 - b1s
+            if item[2] == 'front':
+                #print(candidates)
+                candidates2 = candidates2 - middles - backs
+            if item[2] == 'middle':
+                #print(candidates)
+                candidates2 = candidates2 - fronts - backs
+            if item[2] == 'back':
+                #print(candidates)
+                candidates2 = candidates2 - fronts - middles
+
+            if item[2] == 'd1':
+                #print(candidates)
+                candidates2 = candidates2 - d2s
+
+            if item[2] == 'd2':
+                #print(candidates)
+                candidates2 = candidates2 - d1s
+
+
+    return {'decoded': "".join(['#'] + candidates1 + candidates2), 'wickelfeatures':new}
+
+checkcandidates_beg(Da)['decoded']
+##############################################################################################################################################################
+'''
+A procedure that decodes the last trigram
+'''
+##############################################################################################################################################################
+
+def checkcandidates_end(vector2string):
+
+    candidates1 = MyList('b','p','d','t','g',
+                        'k','m','n','v','f','z','s',
+                        'j','x','l','r','a','e','E',
+                        'i', 'o', 'O', 'u')
+
+    candidates2 = MyList('b','p','d','t','g',
+                        'k','m','n','v','f','z','s',
+                        'j','x','l','r','a','e','E',
+                        'i', 'o', 'O', 'u')
+    ints = MyList('b','p','d','t','g','k','m','n')
+    conts = MyList('v','f','z','s','j','x','l','r')
+    vowels = MyList('a','e','E','i', 'o', 'O', 'u')
+    b1s = MyList('b','p','d','t','g','k','v','f','z','s','j','x','e','i','o','u')
+    b2s = MyList('m','n','l','r','a','E','O')
+    fronts = MyList('b','p','v','f','m','l','E','i','e')
+    middles = MyList('d','t','n','z','s','r','a')
+    backs = MyList('g','k','j','x','o', 'O', 'u')
+    d1s = MyList('b','d','g','m','v','z','j','l','o','n','r','e')
+    d2s = MyList('p', 't', 'k', 'f', 's', 'x', 'a', 'E', 'O', 'u','i')
+
+    for item in vector2string:
+
+        if item[2] == '#':
+            if item[0] == 'int':
+                #print(candidates)
+                candidates1 = candidates1 - conts - vowels
+            if item[0] == 'cont':
+                print("entrei")
+                candidates1 = candidates1 - ints - vowels
+            if item[0] == 'vowel':
+                #print(candidates)
+                candidates1 = candidates1 - conts - ints
+            if item[0] == 'b1':
+                #print(candidates)
+                candidates1 = candidates1 - b2s
+            if item[0] == 'b2':
+                #print(candidates)
+                candidates1 = candidates1 - b1s
+            if item[0] == 'front':
+                #print(candidates)
+                candidates1 = candidates1 - middles - backs
+            if item[0] == 'middle':
+                #print(candidates)
+                candidates1 = candidates1 - fronts - backs
+            if item[0] == 'back':
+                #print(candidates)
+                candidates1 = candidates1 - fronts - middles
+            if item[0] == 'd1':
+
+                candidates1 = candidates1 - d2s
+            if item[0] == 'd2':
+
+                candidates1 = candidates1 - d1s
+            if item[1] == 'int':
+
+                candidates2 = candidates2 - conts - vowels
+            if item[1] == 'cont':
+                candidates2 = candidates2 - ints - vowels
+            if item[1] == 'vowel':
+                candidates2 = candidates2 - conts - ints
+            if item[1] == 'b1':
+
+                candidates2 = candidates2 - b2s
+
+            if item[1] == 'b2':
+                #print(candidates)
+                candidates2 = candidates2 - b1s
+            if item[1] == 'front':
+                #print(candidates)
+                candidates2 = candidates2 - middles - backs
+            if item[1] == 'middle':
+                #print(candidates)
+                candidates2 = candidates2 - fronts - backs
+            if item[1] == 'back':
+                #print(candidates)
+                candidates2 = candidates2 - fronts - middles
+
+            if item[1] == 'd1':
+                #print(candidates)
+                candidates2 = candidates2 - d2s
+
+            if item[1] == 'd2':
+                #print(candidates)
+                candidates2 = candidates2 - d1s
+
+
+
+    return "".join(candidates1 + candidates2 + ["#"])
+
+checkcandidates_end(Comer)
 
 # hidden smallbinding#############################################################################################################################################################
 # '''
@@ -252,8 +245,11 @@ checkcandidate
 given a set of wickelfeatures and a position(int) in the trigram, returns a phoneme candidate
 '''
 def checkcandidate(vector2string,position):
-    if position not in range(0,3):
-        return print("position must be an integer in range (0,3)")
+
+    '''
+    REMINDER:
+    THIS FUNCTION MUST RECEIVE A SET OF WICKELFEATURES REGARDING A SINGLE TRIGRAM.
+    '''
 
     candidates = MyList('b','p','d','t','g','k','m','n','v','f','z','s','j','x','l','r','a','e','E','i', 'o', 'O', 'u')
 
@@ -270,7 +266,7 @@ def checkcandidate(vector2string,position):
 
     for item in vector2string:
         if item[position] == '#':
-            return '#'
+            candidates = '#'
         else:
             if item[position] == 'int':
                 #print(candidates)
@@ -303,6 +299,16 @@ def checkcandidate(vector2string,position):
                 candidates = candidates - d1s
     return candidates
 
+'''
+Usage:
+'''
+da = cf.coding('#da') #first, string into vector
+Da = cf.vector2string(dar,wickelfeatures_list) #then, vector back to string
+for i in range(0,3):
+    print(checkcandidate(Da,i))
+
+
+
 ##############################################################################################################################################################
 
 '''
@@ -322,33 +328,33 @@ def find_compatible(list1,list2): #returns a list if compatible lists in list2 a
 ##############################################################################################################################################################
 '''
 decoding:
-given a list of wickelfeatures (str), decodes it into phonemes
+given a list of wickelfeatures (str), decodes it back into phonemes
 '''
-def decoding(vector2string):
-    firstblock = MyList()
+def decoding(vector2string): #a list of all wickelfeatures of a verb
 
-    for wickelfeature in vector2string:
-        for i in range(0,3):
+#decodes the first trigram, i.e, the first 3 symbols of a verb
+checkcandidates_beg(vector2string)
+
+#finds a new compatible list of wickelfeatures
+new_list_of_wickelfeatures = find_compatible(checkcandidates_beg(vector2string)['wickelfeatures'],vector2string)
+
+#decodes the next phonemes
+
+checkcandidate(new_list_of_wickelfeatures,2)
+#does it until last trigram is decoded (?)
 
 
 
     return decoded
 
-
-decoding(Falar)
-
-dar = cf.coding("#da")
+dar = cf.coding('#dar#') #first, string into vector
 Dar = cf.vector2string(dar,wickelfeatures_list)
+
+find_compatible(checkcandidates_beg(Dar)['wickelfeatures'],Dar)
+
+type(checkcandidates_beg(Dar)['wickelfeatures'])
+type(Dar)
+
+checkcandidates_beg(Dar)['wickelfeatures']
+
 Dar
-Dar_beg = checkcandidates_beg(Dar)
-Dar_beg
-cf.ativate_nodes("#da")
-
-
-falar = cf.coding("#fal#")
-Falar = cf.vector2string(falar,wickelfeatures_list)
-Falar
-checkcandidates_beg(Falar)
-checkcandidates_end(Falar)
-
-#find_compatible(list1,list2)
