@@ -14,14 +14,16 @@ In the chapter "On learning the past tense of English verbs", Rumelhart and McCl
 
 A phoneme can be described as any of the perceptually distinct units of sound in a specified language that distinguish one word from another, for example p, b, d, and t in the English words pad, pat, bad, and bat.
 
-Each phoneme has its own phonological features. According to Rumelhart and McClelland's description, the phoneme 'd', for example, can be characterized by a set of 4 features:  
+Each phoneme has its own phonological features. According to Rumelhart and McClelland's description, the phoneme 'd', for example, can be characterized by a set of 4 features (considering 4 different dimensions in a simplified phonetic table described by the authors):  
 
   - Interrupted
   - Stop
   - Middle
   - Voiced
 
-In a trigram of phonemes, each phoneme may be ascribed features allowing for 64 possible combinations. A wickelfeature is any one of those combinations.
+In a trigram of phonemes, each phoneme may be ascribed 4 features in each dimension allowing for 64 possible combinations. A Wickelfeature is any one of those combinations. 
+
+Rumelhart and McClelland used Wickelfeatures as input units for their neural network.
 
 # Encoding and decoding functions 
 
