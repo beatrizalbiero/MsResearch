@@ -123,8 +123,9 @@ def checkcandidates_beg(vector2string):
 
     return {'decoded': "".join(['#'] + candidates1 + candidates2), 'wickelfeatures':new}
 
-checkcandidates_beg(Da)['decoded']
 ##############################################################################################################################################################
+#type(checkcandidates_beg(Dar)['decoded'] = String
+##############################################################################################################################################
 '''
 A procedure that decodes the last trigram
 '''
@@ -239,9 +240,11 @@ checkcandidates_end(Comer)
 #         return print('Error: big verb')
 #
 # smallbinding(dar)
-##############################################################################################################################################################
+##############################################################################################################################################
+import random
+################
 '''
-checkcandidate
+checkcandidate NOT WORKING
 given a set of wickelfeatures and a position(int) in the trigram, returns a phoneme candidate
 '''
 def checkcandidate(vector2string,position):
@@ -274,8 +277,8 @@ def checkcandidate(vector2string,position):
             if item[position] == 'cont':
                 candidates = candidates - ints - vowels
             if item[position] == 'vowel':
-                #print(candidates)
                 candidates = candidates - conts - ints
+                print(type(candidates))
             if item[position] == 'b1':
                 #print(candidates)
                 candidates = candidates - b2s
@@ -330,25 +333,32 @@ def find_compatible(list1,list2): #returns a list if compatible lists in list2 a
 decoding:
 given a list of wickelfeatures (str), decodes it back into phonemes
 '''
-def decoding(vector2string): #a list of all wickelfeatures of a verb
+def decoding(vector2string): #a list of all wickelfeatures of a verb (strings)
 
-#decodes the first trigram, i.e, the first 3 symbols of a verb
-checkcandidates_beg(vector2string)
+    #decodes the first trigram, i.e, the first 3 symbols of a verb
+    decoded = checkcandidates_beg(vector2string['decoded'])
 
-#finds a new compatible list of wickelfeatures
-new_list_of_wickelfeatures = find_compatible(checkcandidates_beg(vector2string)['wickelfeatures'],vector2string)
+    #finds a new compatible list of wickelfeatures, i.e., an intersection with the first decoded trigram
+    new_list_of_wickelfeatures = find_compatible(checkcandidates_beg(vector2string)['wickelfeatures'],vector2string)
 
-#decodes the next phonemes
+    while new_list_of_wickelfeatures != None:
 
-checkcandidate(new_list_of_wickelfeatures,2)
-#does it until last trigram is decoded (?)
+        #decodes the next phoneme
+        phoneme = checkcandidate(new_list_of_wickelfeatures,2)
 
+        #do this until last phoneme is decoded
+        new_list_of_wickelfeatures = find_compatible(new_list_of_wickelfeatures,vector2string)
+
+        #sums the new phoneme to the
+        decoded = decoded + phoneme
 
 
     return decoded
 
 dar = cf.coding('#dar#') #first, string into vector
 Dar = cf.vector2string(dar,wickelfeatures_list)
+new_list_of_wickelfeatures = find_compatible(new_list_of_wickelfeatures,Dar)
+print(new_list_of_wickelfeatures)
 
 find_compatible(checkcandidates_beg(Dar)['wickelfeatures'],Dar)
 
