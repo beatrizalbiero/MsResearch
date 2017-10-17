@@ -123,7 +123,8 @@ def checkcandidates_beg(vector2string):
 
     return {'decoded': "".join(['#'] + candidates1 + candidates2), 'wickelfeatures':new}
 
-##############################################################################################################################################################
+
+checkcandidates_beg(Dar)['decoded']
 #type(checkcandidates_beg(Dar)['decoded'] = String
 ##############################################################################################################################################
 '''
@@ -222,7 +223,7 @@ def checkcandidates_end(vector2string):
 
     return "".join(candidates1 + candidates2 + ["#"])
 
-checkcandidates_end(Comer)
+#checkcandidates_end(Comer)
 
 # hidden smallbinding#############################################################################################################################################################
 # '''
@@ -244,8 +245,8 @@ checkcandidates_end(Comer)
 import random
 ################
 '''
-checkcandidate NOT WORKING
-given a set of wickelfeatures and a position(int) in the trigram, returns a phoneme candidate
+checkcandidate
+given a set of wickelfeatures and a position(integer) in the trigram, returns a phoneme candidate
 '''
 def checkcandidate(vector2string,position):
 
@@ -269,7 +270,7 @@ def checkcandidate(vector2string,position):
 
     for item in vector2string:
         if item[position] == '#':
-            candidates = '#'
+            return '#'
         else:
             if item[position] == 'int':
                 #print(candidates)
@@ -278,7 +279,7 @@ def checkcandidate(vector2string,position):
                 candidates = candidates - ints - vowels
             if item[position] == 'vowel':
                 candidates = candidates - conts - ints
-                print(type(candidates))
+                #print(type(candidates))
             if item[position] == 'b1':
                 #print(candidates)
                 candidates = candidates - b2s
@@ -306,10 +307,9 @@ def checkcandidate(vector2string,position):
 Usage:
 '''
 da = cf.coding('#da') #first, string into vector
-Da = cf.vector2string(dar,wickelfeatures_list) #then, vector back to string
-for i in range(0,3):
-    print(checkcandidate(Da,i))
-
+Da = cf.vector2string(da,wickelfeatures_list)
+Da #then, vector back to string
+checkcandidate(Da,0)
 
 
 ##############################################################################################################################################################
