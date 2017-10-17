@@ -125,7 +125,7 @@ def checkcandidates_beg(vector2string):
 
 
 checkcandidates_beg(Dar)['decoded']
-#type(checkcandidates_beg(Dar)['decoded'] = String
+type(checkcandidates_beg(Dar)['decoded'])
 ##############################################################################################################################################
 '''
 A procedure that decodes the last trigram
@@ -301,7 +301,7 @@ def checkcandidate(vector2string,position):
             if item[position] == 'd2':
                 #print(candidates)
                 candidates = candidates - d1s
-    return candidates
+    return candidates[0]
 
 '''
 Usage:
@@ -309,10 +309,10 @@ Usage:
 da = cf.coding('#da') #first, string into vector
 Da = cf.vector2string(da,wickelfeatures_list)
 Da #then, vector back to string
-checkcandidate(Da,0)
+type(checkcandidate(Da,0))
 
 
-##############################################################################################################################################################
+##############################################################################################################################################
 
 '''
 find_compatible:
@@ -336,15 +336,15 @@ given a list of wickelfeatures (str), decodes it back into phonemes
 def decoding(vector2string): #a list of all wickelfeatures of a verb (strings)
 
     #decodes the first trigram, i.e, the first 3 symbols of a verb
-    decoded = checkcandidates_beg(vector2string['decoded'])
+    decoded = str(checkcandidates_beg(vector2string)['decoded'])
 
     #finds a new compatible list of wickelfeatures, i.e., an intersection with the first decoded trigram
     new_list_of_wickelfeatures = find_compatible(checkcandidates_beg(vector2string)['wickelfeatures'],vector2string)
 
-    while new_list_of_wickelfeatures != None:
+    while len(new_list_of_wickelfeatures) > 16:
 
         #decodes the next phoneme
-        phoneme = checkcandidate(new_list_of_wickelfeatures,2)
+        phoneme = checkcandidate(new_list_of_wickelfeatures,1)
 
         #do this until last phoneme is decoded
         new_list_of_wickelfeatures = find_compatible(new_list_of_wickelfeatures,vector2string)
@@ -357,8 +357,8 @@ def decoding(vector2string): #a list of all wickelfeatures of a verb (strings)
 
 dar = cf.coding('#dar#') #first, string into vector
 Dar = cf.vector2string(dar,wickelfeatures_list)
-new_list_of_wickelfeatures = find_compatible(new_list_of_wickelfeatures,Dar)
-print(new_list_of_wickelfeatures)
+new_list_of_wickelfeatures = find_compatible(checkcandidates_beg(Dar)['wickelfeatures'],Dar)
+len(new_list_of_wickelfeatures)
 
 find_compatible(checkcandidates_beg(Dar)['wickelfeatures'],Dar)
 
@@ -367,4 +367,7 @@ type(Dar)
 
 checkcandidates_beg(Dar)['wickelfeatures']
 
-Dar
+decoding(Dar)
+
+phoneme = checkcandidate(new_list_of_wickelfeatures,1)
+type(phoneme)
