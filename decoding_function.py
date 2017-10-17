@@ -270,7 +270,7 @@ def checkcandidate(vector2string,position):
 
     for item in vector2string:
         if item[position] == '#':
-            return '#'
+            pass
         else:
             if item[position] == 'int':
                 #print(candidates)
@@ -344,7 +344,7 @@ def decoding(vector2string): #a list of all wickelfeatures of a verb (strings)
     while len(new_list_of_wickelfeatures) > 16:
 
         #decodes the next phoneme
-        phoneme = checkcandidate(new_list_of_wickelfeatures,1)
+        phoneme = checkcandidate(new_list_of_wickelfeatures,2)
 
         #do this until last phoneme is decoded
         new_list_of_wickelfeatures = find_compatible(new_list_of_wickelfeatures,vector2string)
@@ -358,7 +358,11 @@ def decoding(vector2string): #a list of all wickelfeatures of a verb (strings)
 dar = cf.coding('#dar#') #first, string into vector
 Dar = cf.vector2string(dar,wickelfeatures_list)
 new_list_of_wickelfeatures = find_compatible(checkcandidates_beg(Dar)['wickelfeatures'],Dar)
-len(new_list_of_wickelfeatures)
+new_list_of_wickelfeatures
+phoneme = checkcandidate(new_list_of_wickelfeatures,2)
+phoneme
+new_list_of_wickelfeatures = find_compatible(new_list_of_wickelfeatures,Dar)
+new_list_of_wickelfeatures
 
 find_compatible(checkcandidates_beg(Dar)['wickelfeatures'],Dar)
 
