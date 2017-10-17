@@ -488,3 +488,7 @@ def decoding(vector2string): #a list of all wickelfeatures of a verb (strings)
 dar = cf.coding('#dar#') #first, string into vector
 Dar = cf.vector2string(dar,wickelfeatures_list)
 decoding(Dar)
+
+falar = cf.coding('#falar#') #first, string into vector
+Falar = cf.vector2string(falar,wickelfeatures_list)
+decoding(Falar) #not working
