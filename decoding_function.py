@@ -334,79 +334,126 @@ def find_compatible(list1,list2): #returns a list if compatible lists in list2 a
 competion of phonemes
 '''
 def competion(vector2string,position):
+
     competitors = {"b":0,"p":0,"d":0,'t':0,'g':0,'k':0,'m':0,'n':0,'v':0,'f':0,'z':0,'s':0,'j':0,'x':0,'l':0,
                     'r':0,'a':0,'e':0,'E':0,'i':0, 'o':0, 'O':0, 'u':0, '#':0}
 
     for item in vector2string:
             if item[position] == '#':
-                competitors['#'] =+1
+                competitors['#'] = competitors['#']+1
 
             if item[position] == 'int':
-                competitors['b'] =+1
-                competitors['p'] =+1
-                competitors['d'] =+1
-                competitors['t'] =+1
-                competitors['g'] =+1
-                competitors['k'] =+1
-                competitors['m'] =+1
-                competitors['n'] =+1
+                competitors['b'] =competitors['b']+1
+                competitors['p'] =competitors['p']+1
+                competitors['d'] =competitors['d']+1
+                competitors['t'] =competitors['t']+1
+                competitors['g'] =competitors['g']+1
+                competitors['k'] =competitors['k']+1
+                competitors['m'] =competitors['m']+1
+                competitors['n'] =competitors['n']+1
 
             if item[position] == 'cont':
-                competitors['v'] =+1
-                competitors['f'] =+1
-                competitors['z'] =+1
-                competitors['s'] =+1
-                competitors['j'] =+1
-                competitors['x'] =+1
-                competitors['l'] =+1
-                competitors['r'] =+1
+                competitors['v'] =competitors['v']+1
+                competitors['f'] =competitors['f']+1
+                competitors['z'] =competitors['z']+1
+                competitors['s'] =competitors['s']+1
+                competitors['j'] =competitors['j']+1
+                competitors['x'] =competitors['x']+1
+                competitors['l'] =competitors['l']+1
+                competitors['r'] =competitors['r']+1
 
             if item[position] == 'vowel':
-                competitors['a'] =+1
-                competitors['e'] =+1
-                competitors['E'] =+1
-                competitors['i'] =+1
-                competitors['O'] =+1
-                competitors['u'] =+1
-                competitors['o'] =+1
+                competitors['a'] =competitors['a']+1
+                competitors['e'] =competitors['e']+1
+                competitors['E'] =competitors['E']+1
+                competitors['i'] =competitors['i']+1
+                competitors['O'] =competitors['O']+1
+                competitors['u'] =competitors['u']+1
+                competitors['o'] =competitors['o']+1
 
             if item[position] == 'b1':
-                competitors['b'] =+1
-                competitors['p'] =+1
-                competitors['d'] =+1
-                competitors['t'] =+1
-                competitors['g'] =+1
-                competitors['k'] =+1
-                competitors['v'] =+1
-                competitors['f'] =+1
-                competitors['z'] =+1
-                competitors['s'] =+1
-                competitors['j'] =+1
-                competitors['x'] =+1
-                competitors['e'] =+1
-                competitors['i'] =+1
-                competitors['u'] =+1
-                competitors['o'] =+1
+                competitors['b'] =competitors['b']+1
+                competitors['p'] =competitors['p']+1
+                competitors['d'] =competitors['d']+1
+                competitors['t'] =competitors['t']+1
+                competitors['g'] =competitors['g']+1
+                competitors['k'] =competitors['k']+1
+                competitors['v'] =competitors['v']+1
+                competitors['f'] =competitors['f']+1
+                competitors['z'] =competitors['z']+1
+                competitors['s'] =competitors['s']+1
+                competitors['j'] =competitors['j']+1
+                competitors['x'] =competitors['x']+1
+                competitors['e'] =competitors['e']+1
+                competitors['i'] =competitors['i']+1
+                competitors['u'] =competitors['u']+1
+                competitors['o'] =competitors['o']+1
 
             if item[position] == 'b2':
-                competitors['m'] =+1
-                competitors['n'] =+1
-                                
+                competitors['m'] =competitors['m']+1
+                competitors['n'] =competitors['n']+1
+                competitors['l'] =competitors['l']+1
+                competitors['r'] =competitors['r']+1
+                competitors['a'] =competitors['a']+1
+                competitors['E'] =competitors['E'] +1
+                competitors['O'] =competitors['O']+1
+
             if item[position] == 'front':
-                #print(candidates)
-                candidates = candidates - middles - backs
+                competitors['b'] =competitors['b']+1
+                competitors['p'] =competitors['p']+1
+                competitors['m'] =competitors['m']+1
+                competitors['v'] =competitors['v']+1
+                competitors['f'] =competitors['f']+1
+                competitors['l'] =competitors['l'] +1
+                competitors['e'] =competitors['e']+1
+                competitors['E'] =competitors['E'] +1
+                competitors['i'] =competitors['i']+1
+
             if item[position] == 'middle':
-                #print(candidates)
-                candidates = candidates - fronts - backs
+                competitors['d'] =competitors['d']+1
+                competitors['t'] =competitors['t']+1
+                competitors['n'] =competitors['n']+1
+                competitors['z'] =competitors['z']+1
+                competitors['s'] =competitors['s']+1
+                competitors['r'] =competitors['r']+1
+                competitors['a'] =competitors['a']+1
+
             if item[position] == 'back':
-                #print(candidates)
-                candidates = candidates - fronts - middles
+                competitors['g'] =competitors['g']+1
+                competitors['k'] =competitors['k'] +1
+                competitors['j'] = competitors['j'] +1
+                competitors['x'] =competitors['x']+1
+                competitors['o'] =competitors['o']+1
+                competitors['O'] =competitors['O']+1
+                competitors['u'] =competitors['u']+1
+
             if item[position] == 'd1':
-                #print(candidates)
-                candidates = candidates - d2s
+                competitors['d'] =competitors['d']+1
+                competitors['b'] =competitors['b']+1
+                competitors['g'] =competitors['g']+1
+                competitors['m'] =competitors['m']+1
+                competitors['v'] =competitors['v']+1
+                competitors['z'] =competitors['z']+1
+                competitors['j'] =competitors['j']+1
+                competitors['l'] =competitors['l']+1
+                competitors['o'] =competitors['o']+1
+                competitors['n'] =competitors['n']+1
+                competitors['r'] =competitors['r']+1
+                competitors['e'] =competitors['e']+1
             if item[position] == 'd2':
-                #print(candidates)
-                candidates = candidates - d1s
+                competitors['p'] =competitors['p']+1
+                competitors['t'] =competitors['t']+1
+                competitors['k'] =competitors['k']+1
+                competitors['f'] =competitors['f']+1
+                competitors['s'] =competitors['s'] +1
+                competitors['x'] =competitors['x']+1
+                competitors['a'] =competitors['a']+1
+                competitors['E'] =competitors['E']+1
+                competitors['i'] =competitors['i']+1
+                competitors['O'] =competitors['O']+1
+                competitors['u'] =competitors['u']+1
+
+    winner = max(competitors.items(), key=lambda k:k[1])
 
     return winner
 
@@ -440,6 +487,7 @@ dar = cf.coding('#dar#') #first, string into vector
 Dar = cf.vector2string(dar,wickelfeatures_list)
 new_list_of_wickelfeatures = find_compatible(checkcandidates_beg(Dar)['wickelfeatures'],Dar)
 new_list_of_wickelfeatures
+competion(new_list_of_wickelfeatures,2)
 phoneme = checkcandidate(new_list_of_wickelfeatures,2)
 phoneme
 new_list_of_wickelfeatures = find_compatible(new_list_of_wickelfeatures,Dar)
