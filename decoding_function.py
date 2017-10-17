@@ -453,7 +453,9 @@ def competion(vector2string,position):
                 competitors['O'] =competitors['O']+1
                 competitors['u'] =competitors['u']+1
 
-    winner = max(competitors.items(), key=lambda k:k[1])
+    winner_score = max(competitors.items(), key=lambda k:k[1])
+
+    winner = str(winner_score[0])
 
     return winner
 
@@ -472,7 +474,7 @@ def decoding(vector2string): #a list of all wickelfeatures of a verb (strings)
     while len(new_list_of_wickelfeatures) > 16:
 
         #decodes the next phoneme
-        phoneme = checkcandidate(new_list_of_wickelfeatures,2)
+        phoneme = competion(new_list_of_wickelfeatures,2)
 
         #do this until last phoneme is decoded
         new_list_of_wickelfeatures = find_compatible(new_list_of_wickelfeatures,vector2string)
@@ -485,22 +487,4 @@ def decoding(vector2string): #a list of all wickelfeatures of a verb (strings)
 
 dar = cf.coding('#dar#') #first, string into vector
 Dar = cf.vector2string(dar,wickelfeatures_list)
-new_list_of_wickelfeatures = find_compatible(checkcandidates_beg(Dar)['wickelfeatures'],Dar)
-new_list_of_wickelfeatures
-competion(new_list_of_wickelfeatures,2)
-phoneme = checkcandidate(new_list_of_wickelfeatures,2)
-phoneme
-new_list_of_wickelfeatures = find_compatible(new_list_of_wickelfeatures,Dar)
-new_list_of_wickelfeatures
-
-find_compatible(checkcandidates_beg(Dar)['wickelfeatures'],Dar)
-
-type(checkcandidates_beg(Dar)['wickelfeatures'])
-type(Dar)
-
-checkcandidates_beg(Dar)['wickelfeatures']
-
 decoding(Dar)
-
-phoneme = checkcandidate(new_list_of_wickelfeatures,1)
-type(phoneme)
