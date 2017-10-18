@@ -489,6 +489,6 @@ dar = cf.coding('#dar#') #first, string into vector
 Dar = cf.vector2string(dar,wickelfeatures_list)
 decoding(Dar)
 
-falar = cf.coding('#falar#') #first, string into vector
-Falar = cf.vector2string(falar,wickelfeatures_list)
-decoding(Falar) #not working
+fala = cf.coding('#fala#') #first, string into vector
+Fala = cf.vector2string(fala,wickelfeatures_list)
+decoding(Fala)
