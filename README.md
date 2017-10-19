@@ -27,7 +27,7 @@ Rumelhart and McClelland used Wickelfeatures as input units for their neural net
 
 # The Neural Net 
 
-![alt text](https://user-images.githubusercontent.com/31517216/31748775-4a9b578a-b454-11e7-8005-4faf6cd7c51d.jpg)
+![alt text](https://user-images.githubusercontent.com/31517216/31749125-b64bec18-b456-11e7-8fe0-3545b687eaf3.jpg)
 
 
 # Folders 
