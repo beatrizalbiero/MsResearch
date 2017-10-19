@@ -25,9 +25,9 @@ In a trigram of phonemes, each phoneme may be ascribed 4 features in each dimens
 
 Rumelhart and McClelland used Wickelfeatures as input units for their neural network.
 
-# Encoding and decoding functions 
+# The Neural Net 
 
-(...)
+![Alt text](/Users/Beatriz/Dropbox/Linguística/algoritmos/principal/neuralnet.jpg)
 
 
 # Folders 
