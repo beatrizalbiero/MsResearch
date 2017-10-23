@@ -4,8 +4,6 @@ Coding Function:
 The coding function receives a string (in this case, a verb)
 and returns a boolean list with length 460, which is going to be the activation vetor after all.
 '''
-
-
 ###############################################################################################################################################################
 
 '''
