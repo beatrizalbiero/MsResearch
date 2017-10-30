@@ -27,17 +27,12 @@ Rumelhart and McClelland used Wickelfeatures as input units for their neural net
 
 # The Neural Net 
 
-![alt text](https://user-images.githubusercontent.com/31517216/31749125-b64bec18-b456-11e7-8fe0-3545b687eaf3.jpg)
+![alt text](https://user-images.githubusercontent.com/31517216/32189712-ba7451a0-bd92-11e7-92fa-b332c58cc962.png)
 
+# The Encoding Function
 
-# Folders 
- - coding_function
- - decoding_function
- - wickelfeatures_inputs_generator
- - list_verbs
+# The Decoding/Binding Function
  
 # TODO
 - phonetic transcription of verbs
-- finish the decoding function
 - neural networks
-- (...)
