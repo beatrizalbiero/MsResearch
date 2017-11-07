@@ -52,15 +52,15 @@ for item in phoneticI:
 X = dictioinf.values() #input column
 Y = dictioI.values() #output column
 
-numpy.array(Y)
-
+numpy.array(X)
+len(X)
 
 '''
 2. Define model
 '''
 # create model
 model = Sequential()
-model.add(Dense(460, input_dim=460, activation='sigmoid'))
+model.add(Dense(460, input_dim=19, activation='relu'))
 #model.add(Dense(150, activation='sigmoid'))
 model.add(Dense(460, activation='sigmoid'))
 
@@ -69,19 +69,21 @@ model.add(Dense(460, activation='sigmoid'))
 '''
 
 # Compile model
-model.compile(loss='mean_squared_error', optimizer='sgd', metrics=['accuracy'])
+model.compile(loss='mean_squared_error', optimizer='adadelta', metrics=['accuracy'])
 
 '''
 4. Fit model
 '''
 
-# def get_batch(n):
-#     chosen = random.sample(range(1,20), n)
-#     for i in range(n):
-#         #todo: how to select dictionary entries?
-#     return x, y
+def get_batch(n):
 
-model.fit(X, Y, epochs=150, batch_size=20)
+    return
+
+
+
+chosen = random.sample(range(1,20), 10)
+
+model.fit(), epochs=150, batch_size=10)
 
 '''
 5. Evaluate model
