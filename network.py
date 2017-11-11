@@ -4,7 +4,7 @@ packages
 import keras
 from keras.models import Sequential
 from keras.layers import Dense
-import numpy
+import numpy as np
 import random
 # fix random seed for reproducibility
 numpy.random.seed(7)
@@ -52,42 +52,39 @@ for item in phoneticI:
 X = dictioinf.values() #input column
 Y = dictioI.values() #output column
 
+X
 numpy.array(X)
 len(X)
+
+X = np.array(list(X))
+Y = np.array(list(Y))
 
 '''
 2. Define model
 '''
-# create model
+
 model = Sequential()
-model.add(Dense(460, input_dim=19, activation='relu'))
-#model.add(Dense(150, activation='sigmoid'))
-model.add(Dense(460, activation='sigmoid'))
+model.add(Dense(460, input_shape=(460,), activation='sigmoid'))
 
 '''
 3. Compile model
 '''
 
-# Compile model
 model.compile(loss='mean_squared_error', optimizer='adadelta', metrics=['accuracy'])
 
 '''
 4. Fit model
 '''
-
-def get_batch(n):
-
-    return
-
-
-
-chosen = random.sample(range(1,20), 10)
-
-model.fit(), epochs=150, batch_size=10)
+model.fit(X,Y, epochs=20, batch_size=5)
 
 '''
 5. Evaluate model
 '''
-# evaluate the model
-scores = model.evaluate(X, Y)
-print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
+#F1_score
+#https://en.wikipedia.org/wiki/F1_score
+#threshold on numpy
+# import numpy as np
+#
+# a = np.array([[0.2, 0.3, 0.5, 0.7, 0.9, 0.8],
+#               [0.2, 0.4, 0.5, 0.9, 0.3, 0.1]])
+# np.where(a >= 0.5, 1, 0)
