@@ -43,8 +43,12 @@ Rumelhart and McClelland used Wickelfeatures as input units for their neural net
 
 # The Encoding Function
 
+coding_function.py
+
 # The Decoding/Binding Function
- 
+
+decoding_function.py
+
 # TODO
 - phonetic transcription of verbs
 - neural networks
