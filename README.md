@@ -20,8 +20,20 @@ Each phoneme has its own phonological features. According to Rumelhart and McCle
   - Stop
   - Middle
   - Voiced
+  
+|       |        |       |     | Place  |     |      |     |
+|-------|--------|-------|-----|--------|-----|------|-----|
+|       |        | Front |     | Middle |     | Back |     |
+|       |        | V/L   | U/S | V/L    | U/S | V/L  | U/S |
+| Int   | Stop   | b     | p   | d      | t   | g    | k   |
+|       | Nasal  | m     | _   | n      | _   | N    | _   |
+| Cont  | Fric   | v/D   | f/T | z      | s   | Z/j  | S/C |
+|       | Liq/SV | w/l   | _   | r      | _   | y    | h   |
+| Vowel | High   | E     | i   | O      | ^   | U    | u   |
+|       | Low    | A     | e   | I      | a   | W    | o   |
 
-In a trigram of phonemes, each phoneme may be ascribed 4 features in each dimension allowing for 64 possible combinations. A Wickelfeature is any one of those combinations. 
+
+In a trigram of phonemes, each phoneme may be ascribed 4 features. A Wickelfeature is a combination of 3 sequential features. 
 
 Rumelhart and McClelland used Wickelfeatures as input units for their neural network.
 
