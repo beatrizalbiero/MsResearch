@@ -31,6 +31,7 @@ def dictionary(phoneme):
              "z":["cont","b1","middle","d1","notboundary"],"s":["cont","b1","middle","d2","notboundary"],
              "j":["cont","b1","back","d1","notboundary"],"x":["cont","b1","back","d2","notboundary"],
              "l":["cont","b2","front","d1","notboundary"],"r":["cont","b2","middle","d1","notboundary"],
+             "h":["cont","b2","back","d2","notboundary"],
              "a":["vowel","b2","middle","d2","notboundary"],"e":["vowel","b1","front","d1","notboundary"],
              "E":["vowel","b2","front","d2","notboundary"], "i":["vowel","b1","front","d2","notboundary"],
              "o":["vowel","b1","back","d1","notboundary"], "O":["vowel","b2","back","d2","notboundary"],
