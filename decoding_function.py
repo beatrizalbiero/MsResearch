@@ -1,12 +1,11 @@
 '''
 Decoding function:
-After the neural network training, there must be a way of converting a vector of wickelfeatures into wickelphones again and, finally,
-back to a whole string (verb).
+After the neural network training, there must be a way of converting a vector of wickelfeatures into wickelphones
+again and, finally,back to a whole string (verb).
 '''
 #############################################################################################################################
 
 import coding_function as cf
-#importlib.reload(cf)
 import pickle
 with open("nodes.txt", "rb") as file:
     wickelfeatures_list = pickle.load(file)
@@ -15,10 +14,14 @@ with open("nodes.txt", "rb") as file:
 
 '''
 idea: start with a set of possible candidates and then reducing them until we have a winner
-MyList: A new class develop in order to eliminate incompatibilities
 '''
 
 class MyList(list):
+    '''
+    MyList: A new class developed in order to eliminate incompatibilities (filtering)
+    :MyList type: list
+    :rtype: list
+    '''
     def __init__(self, *args):
         super(MyList, self).__init__(args)
 
@@ -27,12 +30,14 @@ class MyList(list):
 
 #############################################################################################################################
 
-'''
-checkcandidates_beg:
-A procedure that decodes the first trigram of a verb
-'''
 
 def checkcandidates_beg(vector2string):
+    '''
+    checkcandidates_beg:
+    A procedure that decodes the first trigram of a verb
+    :vector2string type: Mylist
+    :rtype:
+    '''
     candidates1 = MyList('b','p','d','t','g',
                 'k','m','n','v','f','z','s',
                 'j','x','l','r','a','e','E',
@@ -124,7 +129,8 @@ def checkcandidates_beg(vector2string):
 
     return {'decoded': "".join(['#'] + candidates1 + candidates2), 'wickelfeatures':new}
 
-
+dar = cf.coding('#dar#')
+Dar = cf.vector2string(dar)
 checkcandidates_beg(Dar)['decoded']
 type(checkcandidates_beg(Dar)['decoded'])
 #############################################################################################################################
