@@ -128,11 +128,13 @@ def checkcandidates_beg(vector2string):
 
 
     return {'decoded': "".join(['#'] + candidates1 + candidates2), 'wickelfeatures':new}
-
+'''
+Example:
 dar = cf.coding('#dar#')
 Dar = cf.vector2string(dar)
 checkcandidates_beg(Dar)['decoded']
 type(checkcandidates_beg(Dar)['decoded'])
+'''
 #############################################################################################################################
 # '''
 # checkcandidates_end
