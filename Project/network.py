@@ -8,7 +8,7 @@ from keras.models import Sequential
 from keras.layers import Dense
 
 # fix random seed for reproducibility
-numpy.random.seed(7)
+#np.random.seed(7)
 
 '''
 1.Load data
@@ -20,7 +20,7 @@ import csv
 '''
 open a csv file containing phonetic transcribed verbs, inifitive and conjugated forms
 '''
-with open('ptverbs_test.csv') as csvfile:
+with open('training_data_set.csv','r') as csvfile:
     readcsv = csv.reader(csvfile, delimiter = ',')
     phoneticinf = []
     phoneticI = []
