@@ -39,6 +39,35 @@ def dictionary(phoneme):
              }
     return dictio[phoneme]
 
+'''
+Check dataset:
+'''
+def dataTest(phoneticinf,phoneticI):
+    i = 1
+    for word in phoneticinf:
+        if str(word[0]) != '#':
+            print ('error: # missing in line {}'.format(i))
+            break
+        else: i = i + 1
+        i = 1
+        for character in word:
+            if str(character) not in dictio:
+                print ('error: char ' + character + ' not in dictionary in word:' + word + ' line ' + str(i))
+                break
+    i = 1
+    for word in phoneticI:
+        if str(word[0]) != '#':
+            print ('error: # missing in line {}'.format(i))
+            break
+        else: i = i + 1
+        i = 1
+        for character in word:
+            if str(character) not in dictio:
+                print ('error: char ' + character + ' not in dictionary in word:' + word + ' line ' + str(i))
+                break
+
+    return 'done'
+
 def trigramizer(verb):
     """
     trigramizer
