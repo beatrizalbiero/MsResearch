@@ -135,6 +135,7 @@ def on_epoch_end(self, epoch, logs={}):
 metrics = Metrics()
 #F1_score
 #https://en.wikipedia.org/wiki/F1_score
+#https://medium.com/@thongonary/how-to-compute-f1-score-for-each-epoch-in-keras-a1acd17715a2
 #threshold on numpy
 # import numpy as np
 #
