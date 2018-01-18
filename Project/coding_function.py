@@ -8,10 +8,10 @@ activation vector after all.
 """
 ###############################################################################
 
-import pickle
 from itertools import islice, tee
 from itertools import compress
 from Files import dct
+from Files import nodes
 
 
 def dataTest(phoneticinf, phoneticI):
@@ -107,8 +107,7 @@ def wickelfeatures(verb):
 A list of 460 nodes (wickelfeatures) has been created so we can compare it to
 the verb wikelfeatures.
 """
-with open("nodes.txt", "rb") as file:
-    wickelfeatures_list = pickle.load(file)
+wickelfeatures_list = nodes.nds
 
 
 def prep(lista_wkl):
@@ -198,7 +197,9 @@ def coding(verb):
     return nodes
 
 # Example:
-# dar = coding("#dar#")
+
+
+dar = coding("#dar#")
 
 
 def vector2string(filter_list, wickelfeatures_list):
