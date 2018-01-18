@@ -11,34 +11,7 @@ activation vector after all.
 import pickle
 from itertools import islice, tee
 from itertools import compress
-
-dictio = {
-         "#": ["#", "#", "#", "#", "#"],
-         "b": ["int", "b1", "front", "d1", "notboundary"],
-         "p": ["int", "b1", "front", "d2", "notboundary"],
-         "d": ["int", "b1", "middle", "d1", "notboundary"],
-         "t": ["int", "b1", "middle", "d2", "notboundary"],
-         "g": ["int", "b1", "back", "d1", "notboundary"],
-         "k": ["int", "b1", "back", "d2", "notboundary"],
-         "m": ["int", "b2", "front", "d1", "notboundary"],
-         "n": ["int", "b2", "middle", "d1", "notboundary"],
-         "v": ["cont", "b1", "front", "d1", "notboundary"],
-         "f": ["cont", "b1", "front", "d2", "notboundary"],
-         "z": ["cont", "b1", "middle", "d1", "notboundary"],
-         "s": ["cont", "b1", "middle", "d2", "notboundary"],
-         "j": ["cont", "b1", "back", "d1", "notboundary"],
-         "x": ["cont", "b1", "back", "d2", "notboundary"],
-         "l": ["cont", "b2", "front", "d1", "notboundary"],
-         "r": ["cont", "b2", "middle", "d1", "notboundary"],
-         "h": ["cont", "b2", "back", "d2", "notboundary"],
-         "a": ["vowel", "b2", "middle", "d2", "notboundary"],
-         "e": ["vowel", "b1", "front", "d1", "notboundary"],
-         "E": ["vowel", "b2", "front", "d2", "notboundary"],
-         "i": ["vowel", "b1", "front", "d2", "notboundary"],
-         "o": ["vowel", "b1", "back", "d1", "notboundary"],
-         "O": ["vowel", "b2", "back", "d2", "notboundary"],
-         "u": ["vowel", "b1", "back", "d2", "notboundary"]
-         }
+from Files import dct
 
 def dataTest(phoneticinf,phoneticI):
     """
@@ -57,7 +30,7 @@ def dataTest(phoneticinf,phoneticI):
         else: i = i + 1
         i = 1
         for character in word:
-            if str(character) not in dictio:
+            if str(character) not in dct.dictio:
                 print ('error: char ' + character + ' not in dictionary in word:' + word + ' line ' + str(i))
                 break
     i = 1
@@ -68,7 +41,7 @@ def dataTest(phoneticinf,phoneticI):
         else: i = i + 1
         i = 1
         for character in word:
-            if str(character) not in dictio:
+            if str(character) not in dct.dictio:
                 print ('error: char ' + character + ' not in dictionary in word:' + word + ' line ' + str(i))
                 break
 
@@ -99,7 +72,7 @@ def create_matrix(trigrams_list):
     for lst in trigrams_list:
         trigram_list = []
         for i in lst:
-            trigram_list.append(dictio[i])
+            trigram_list.append(dct.dictio[i])
         matrix.append(trigram_list)
     return matrix
 
