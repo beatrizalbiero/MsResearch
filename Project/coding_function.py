@@ -13,9 +13,11 @@ from itertools import islice, tee
 from itertools import compress
 from Files import dct
 
-def dataTest(phoneticinf,phoneticI):
+
+def dataTest(phoneticinf, phoneticI):
     """
     Check dataset.
+
     A function to test if the dataset fits the network's requirements.
 
     :type phoneticinf: list
@@ -25,31 +27,37 @@ def dataTest(phoneticinf,phoneticI):
     i = 1
     for word in phoneticinf:
         if str(word[0]) != '#':
-            print ('error: # missing in line {}'.format(i))
+            print('error: # missing in line {}'.format(i))
             break
-        else: i = i + 1
+        else:
+            i = i + 1
         i = 1
-        for character in word:
-            if str(character) not in dct.dictio:
-                print ('error: char ' + character + ' not in dictionary in word:' + word + ' line ' + str(i))
+        for letter in word:
+            if str(letter) not in dct.dictio:
+                print('error: char ' + letter +
+                      ' not in dictionary in word:' + word + ' line ' + str(i))
                 break
     i = 1
     for word in phoneticI:
         if str(word[0]) != '#':
-            print ('error: # missing in line {}'.format(i))
+            print('error: # missing in line {}'.format(i))
             break
-        else: i = i + 1
+        else:
+            i = i + 1
         i = 1
         for character in word:
             if str(character) not in dct.dictio:
-                print ('error: char ' + character + ' not in dictionary in word:' + word + ' line ' + str(i))
+                print('error: char ' + character +
+                      ' not in dictionary in word:' + word + ' line ' + str(i))
                 break
 
     return 'done'
 
+
 def trigramizer(verb):
     """
     Trigramizer.
+
     This procedure receives a verb and returns a list of all trigrams.
 
     :type verb: str
@@ -59,16 +67,18 @@ def trigramizer(verb):
     trigrams = zip(*(islice(seq, index, None) for index, seq in enumerate(tee(verb, N))))
     return list(trigrams)
 
+
 def create_matrix(trigrams_list):
     """
-    create_matrix.
-    This procedure receives a trigram of phonemes and returns, (for a single trigram), a list of its phonemes
-    associated to the dictionary
+    Create a matrix.
+
+    This procedure receives a trigram of phonemes and returns,
+    (for a single trigram), a list of its phonemes associated to the dictionary
 
     :trigrams_list type: list
     :rtype: list
     """
-    matrix=[]
+    matrix = []
     for lst in trigrams_list:
         trigram_list = []
         for i in lst:
@@ -76,11 +86,13 @@ def create_matrix(trigrams_list):
         matrix.append(trigram_list)
     return matrix
 
+
 def wickelfeatures(verb):
     """
-    wickelfeatures
-    Given a verb, this procedure returns a matrix of Wickelfeatures, i.e., trigrams associated to
-    the dicionary of features
+    Wickelfeatures.
+
+    Given a verb, this procedure returns a matrix of Wickelfeatures, i.e.,
+     trigrams associated to the dicionary of features
 
     :verb type: str
     :rtype: list
@@ -90,15 +102,19 @@ def wickelfeatures(verb):
 
     return matrix
 
+
 """
-A list of 460 nodes (wickelfeatures) has been created so we can compare it to the verb wikelfeatures.
+A list of 460 nodes (wickelfeatures) has been created so we can compare it to
+the verb wikelfeatures.
 """
 with open("nodes.txt", "rb") as file:
     wickelfeatures_list = pickle.load(file)
 
+
 def prep(lista_wkl):
     """
     Prep: Prepares the verb for the comparison.
+
     This procedure receives a single wickelfeature and
     returns a table of 16 wickelfeatures that are going to be activated
     (based on McClellands and Rumelharts experiment)
@@ -108,29 +124,32 @@ def prep(lista_wkl):
     :rtype: list
     """
     new_list = [
-    [lista_wkl[0][0], lista_wkl[1][0],lista_wkl[2][0]],
-    [lista_wkl[0][1], lista_wkl[1][0],lista_wkl[2][1]],
-    [lista_wkl[0][2], lista_wkl[1][0],lista_wkl[2][2]],
-    [lista_wkl[0][3], lista_wkl[1][0],lista_wkl[2][3]],
-    [lista_wkl[0][0], lista_wkl[1][1],lista_wkl[2][0]],
-    [lista_wkl[0][1], lista_wkl[1][1],lista_wkl[2][1]],
-    [lista_wkl[0][2], lista_wkl[1][1],lista_wkl[2][2]],
-    [lista_wkl[0][3], lista_wkl[1][1],lista_wkl[2][3]],
-    [lista_wkl[0][0], lista_wkl[1][2],lista_wkl[2][0]],
-    [lista_wkl[0][1], lista_wkl[1][2],lista_wkl[2][1]],
-    [lista_wkl[0][2], lista_wkl[1][2],lista_wkl[2][2]],
-    [lista_wkl[0][3], lista_wkl[1][2],lista_wkl[2][3]],
-    [lista_wkl[0][0], lista_wkl[1][3],lista_wkl[2][0]],
-    [lista_wkl[0][1], lista_wkl[1][3],lista_wkl[2][1]],
-    [lista_wkl[0][2], lista_wkl[1][3],lista_wkl[2][2]],
-    [lista_wkl[0][3], lista_wkl[1][3],lista_wkl[2][3]]
+                [lista_wkl[0][0], lista_wkl[1][0], lista_wkl[2][0]],
+                [lista_wkl[0][1], lista_wkl[1][0], lista_wkl[2][1]],
+                [lista_wkl[0][2], lista_wkl[1][0], lista_wkl[2][2]],
+                [lista_wkl[0][3], lista_wkl[1][0], lista_wkl[2][3]],
+                [lista_wkl[0][0], lista_wkl[1][1], lista_wkl[2][0]],
+                [lista_wkl[0][1], lista_wkl[1][1], lista_wkl[2][1]],
+                [lista_wkl[0][2], lista_wkl[1][1], lista_wkl[2][2]],
+                [lista_wkl[0][3], lista_wkl[1][1], lista_wkl[2][3]],
+                [lista_wkl[0][0], lista_wkl[1][2], lista_wkl[2][0]],
+                [lista_wkl[0][1], lista_wkl[1][2], lista_wkl[2][1]],
+                [lista_wkl[0][2], lista_wkl[1][2], lista_wkl[2][2]],
+                [lista_wkl[0][3], lista_wkl[1][2], lista_wkl[2][3]],
+                [lista_wkl[0][0], lista_wkl[1][3], lista_wkl[2][0]],
+                [lista_wkl[0][1], lista_wkl[1][3], lista_wkl[2][1]],
+                [lista_wkl[0][2], lista_wkl[1][3], lista_wkl[2][2]],
+                [lista_wkl[0][3], lista_wkl[1][3], lista_wkl[2][3]]
     ]
     return new_list
 
+
 def activate_nodes(verb):
     """
-    Activate_nodes.
-    This procedure receives a verb and returns a list of wickelfeatures to be activated (based in the 'prep' procedure).
+    Activate nodes.
+
+    This procedure receives a verb and returns a list of wickelfeatures to be
+    activated (based in the 'prep' procedure).
 
     :verb type: str
     :rtype: list
@@ -140,9 +159,11 @@ def activate_nodes(verb):
         list_prep.append(prep(item))
     return list_prep
 
-def compare (list1,list2):
+
+def compare(list1, list2):
     """
-    Compare.
+    Compare two lists.
+
     This procedure simply compares a list of wickelfeatures (of the required
     verb) with the table of all possible wickelfeatures (the
     wickelfeatures_list)
@@ -152,7 +173,7 @@ def compare (list1,list2):
     :list2 type: list
     :rtype: list
     """
-    list_i =[0]*460
+    list_i = [0] * 460
     for item in list2:
         for x in item:
             for i, element in enumerate(list1):
@@ -161,24 +182,29 @@ def compare (list1,list2):
 
     return list_i
 
+
 def coding(verb):
     """
-    coding
-    Finally, this procedure receives a verb and returns a 460 length boolean list.
+    coding.
+
+    Finally, this procedure receives a verb and returns a 460 length boolean
+    list.
 
     :verb type: str
     :rtype: list
     """
     table = activate_nodes(verb)
-    nodes = compare(wickelfeatures_list,table)
+    nodes = compare(wickelfeatures_list, table)
     return nodes
 
-#Example:
-dar = coding("#dar#")
+# Example:
+# dar = coding("#dar#")
 
-def vector2string(filter_list,wickelfeatures_list):
+
+def vector2string(filter_list, wickelfeatures_list):
     """
     vector2string.
+
     This procedure receives a boolean list of wickelfeatures and returns a
     string vector of wickelfeatures.
 
