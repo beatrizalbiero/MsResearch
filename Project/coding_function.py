@@ -1,65 +1,55 @@
-##############################################################################################################################
-'''
-Coding Function:
+###############################################################################
+"""
+Coding Function.
+
 The coding function receives a string (in this case, a verb)
-and returns a boolean list with length 460, which is going to be the activation vetor after all.
-'''
-##############################################################################################################################
+and returns a boolean list with length 460, which is going to be the
+activation vector after all.
+"""
+###############################################################################
 
 import pickle
 from itertools import islice, tee
 from itertools import compress
 
-def dictionary(phoneme):
-    """
-    dictionary
-    This dictionary associates a phoneme to a set of phonological features
-    This dictionary was created based on the phonological table of brazilian portuguese language
+dictio = {
+         "#": ["#", "#", "#", "#", "#"],
+         "b": ["int", "b1", "front", "d1", "notboundary"],
+         "p": ["int", "b1", "front", "d2", "notboundary"],
+         "d": ["int", "b1", "middle", "d1", "notboundary"],
+         "t": ["int", "b1", "middle", "d2", "notboundary"],
+         "g": ["int", "b1", "back", "d1", "notboundary"],
+         "k": ["int", "b1", "back", "d2", "notboundary"],
+         "m": ["int", "b2", "front", "d1", "notboundary"],
+         "n": ["int", "b2", "middle", "d1", "notboundary"],
+         "v": ["cont", "b1", "front", "d1", "notboundary"],
+         "f": ["cont", "b1", "front", "d2", "notboundary"],
+         "z": ["cont", "b1", "middle", "d1", "notboundary"],
+         "s": ["cont", "b1", "middle", "d2", "notboundary"],
+         "j": ["cont", "b1", "back", "d1", "notboundary"],
+         "x": ["cont", "b1", "back", "d2", "notboundary"],
+         "l": ["cont", "b2", "front", "d1", "notboundary"],
+         "r": ["cont", "b2", "middle", "d1", "notboundary"],
+         "h": ["cont", "b2", "back", "d2", "notboundary"],
+         "a": ["vowel", "b2", "middle", "d2", "notboundary"],
+         "e": ["vowel", "b1", "front", "d1", "notboundary"],
+         "E": ["vowel", "b2", "front", "d2", "notboundary"],
+         "i": ["vowel", "b1", "front", "d2", "notboundary"],
+         "o": ["vowel", "b1", "back", "d1", "notboundary"],
+         "O": ["vowel", "b2", "back", "d2", "notboundary"],
+         "u": ["vowel", "b1", "back", "d2", "notboundary"]
+         }
 
-    :type phoneme: str
-    :rtype: dict
-
-    """
-
-    dictio = {
-             "#":["#","#","#","#","#"],
-             "b":["int","b1","front","d1","notboundary"], "p":["int","b1","front","d2","notboundary"],
-             "d":["int","b1","middle","d1","notboundary"],"t":["int","b1","middle","d2","notboundary"],
-             "g":["int","b1","back","d1","notboundary"],"k":["int","b1","back","d2","notboundary"],
-             "m":["int","b2","front","d1","notboundary"],"n":["int","b2","middle","d1","notboundary"],
-             "v":["cont","b1","front","d1","notboundary"],"f":["cont","b1","front","d2","notboundary"],
-             "z":["cont","b1","middle","d1","notboundary"],"s":["cont","b1","middle","d2","notboundary"],
-             "j":["cont","b1","back","d1","notboundary"],"x":["cont","b1","back","d2","notboundary"],
-             "l":["cont","b2","front","d1","notboundary"],"r":["cont","b2","middle","d1","notboundary"],
-             "h":["cont","b2","back","d2","notboundary"],
-             "a":["vowel","b2","middle","d2","notboundary"],"e":["vowel","b1","front","d1","notboundary"],
-             "E":["vowel","b2","front","d2","notboundary"], "i":["vowel","b1","front","d2","notboundary"],
-             "o":["vowel","b1","back","d1","notboundary"], "O":["vowel","b2","back","d2","notboundary"],
-             "u":["vowel","b1","back","d2","notboundary"]
-             }
-    return dictio[phoneme]
-
-'''
-Check dataset:
-'''
 def dataTest(phoneticinf,phoneticI):
+    """
+    Check dataset.
+    A function to test if the dataset fits the network's requirements.
+
+    :type phoneticinf: list
+    :type phoneticI: list
+    :rtype: str
+    """
     i = 1
-    dictio = {
-             "#":["#","#","#","#","#"],
-             "b":["int","b1","front","d1","notboundary"], "p":["int","b1","front","d2","notboundary"],
-             "d":["int","b1","middle","d1","notboundary"],"t":["int","b1","middle","d2","notboundary"],
-             "g":["int","b1","back","d1","notboundary"],"k":["int","b1","back","d2","notboundary"],
-             "m":["int","b2","front","d1","notboundary"],"n":["int","b2","middle","d1","notboundary"],
-             "v":["cont","b1","front","d1","notboundary"],"f":["cont","b1","front","d2","notboundary"],
-             "z":["cont","b1","middle","d1","notboundary"],"s":["cont","b1","middle","d2","notboundary"],
-             "j":["cont","b1","back","d1","notboundary"],"x":["cont","b1","back","d2","notboundary"],
-             "l":["cont","b2","front","d1","notboundary"],"r":["cont","b2","middle","d1","notboundary"],
-             "h":["cont","b2","back","d2","notboundary"],
-             "a":["vowel","b2","middle","d2","notboundary"],"e":["vowel","b1","front","d1","notboundary"],
-             "E":["vowel","b2","front","d2","notboundary"], "i":["vowel","b1","front","d2","notboundary"],
-             "o":["vowel","b1","back","d1","notboundary"], "O":["vowel","b2","back","d2","notboundary"],
-             "u":["vowel","b1","back","d2","notboundary"]
-             }
     for word in phoneticinf:
         if str(word[0]) != '#':
             print ('error: # missing in line {}'.format(i))
@@ -86,8 +76,8 @@ def dataTest(phoneticinf,phoneticI):
 
 def trigramizer(verb):
     """
-    trigramizer
-    This procedure receives a verb and returns a list of all trigrams
+    Trigramizer.
+    This procedure receives a verb and returns a list of all trigrams.
 
     :type verb: str
     :rtype: list
@@ -98,7 +88,7 @@ def trigramizer(verb):
 
 def create_matrix(trigrams_list):
     """
-    create_matrix
+    create_matrix.
     This procedure receives a trigram of phonemes and returns, (for a single trigram), a list of its phonemes
     associated to the dictionary
 
@@ -109,7 +99,7 @@ def create_matrix(trigrams_list):
     for lst in trigrams_list:
         trigram_list = []
         for i in lst:
-            trigram_list.append(dictionary(i))
+            trigram_list.append(dictio[i])
         matrix.append(trigram_list)
     return matrix
 
@@ -127,16 +117,15 @@ def wickelfeatures(verb):
 
     return matrix
 
-'''
-Input nodes "dictionary"
-A list of 460 nodes (wickelfeatures) has been created so we can compare it to the verb wikelfeatures
-'''
+"""
+A list of 460 nodes (wickelfeatures) has been created so we can compare it to the verb wikelfeatures.
+"""
 with open("nodes.txt", "rb") as file:
     wickelfeatures_list = pickle.load(file)
 
 def prep(lista_wkl):
     """
-    Prep: Prepares the verb for the comparison
+    Prep: Prepares the verb for the comparison.
     This procedure receives a single wickelfeature and
     returns a table of 16 wickelfeatures that are going to be activated
     (based on McClellands and Rumelharts experiment)
@@ -165,10 +154,10 @@ def prep(lista_wkl):
     ]
     return new_list
 
-def activate_nodes(verb): #for each verb, returns the table of features to be activated
+def activate_nodes(verb):
     """
-    activate_nodes
-    This procedure receives a verb and returns a list of wickelfeatures to be activated (based in the 'prep' procedure)
+    Activate_nodes.
+    This procedure receives a verb and returns a list of wickelfeatures to be activated (based in the 'prep' procedure).
 
     :verb type: str
     :rtype: list
@@ -180,9 +169,10 @@ def activate_nodes(verb): #for each verb, returns the table of features to be ac
 
 def compare (list1,list2):
     """
-    compare
-    This procedure simply compares a list of wickelfeatures (of the required verb) with the table of all
-    possible wickelfeatures (the wickelfeatures_list)
+    Compare.
+    This procedure simply compares a list of wickelfeatures (of the required
+    verb) with the table of all possible wickelfeatures (the
+    wickelfeatures_list)
     It is a boolean vector with length 460.
 
     :list1 type: list
@@ -214,13 +204,14 @@ def coding(verb):
 dar = coding("#dar#")
 
 def vector2string(filter_list,wickelfeatures_list):
-    '''
-    vector2string
-    This procedure receives a boolean list of wickelfeatures and returns a string vector of wickelfeatures
+    """
+    vector2string.
+    This procedure receives a boolean list of wickelfeatures and returns a
+    string vector of wickelfeatures.
 
     :filter_list type: list
     :wickelfeatures_list type: list
     :rtype: list
-    '''
+    """
     vecting = list(compress(wickelfeatures_list, filter_list))
     return vecting
