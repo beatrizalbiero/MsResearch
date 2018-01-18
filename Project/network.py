@@ -1,40 +1,45 @@
-'''
-packages
-'''
+"""
+Neural Network with Keras.
+"""
+
+
 import keras
-import numpy as np
-import random
 from keras.models import Sequential
 from keras.layers import Dense
-
-# fix random seed for reproducibility
-#np.random.seed(7)
-
-'''
-1.Load data
-'''
-
+import numpy as np
+import random
+import pickle
 import coding_function as cf
+import decoding_function as df
 import csv
 
-'''
-open a csv file containing phonetic transcribed verbs, inifitive and conjugated forms
-'''
-with open('training_data_set.csv','r') as csvfile:
+# np.random.seed(7)
+
+"""
+1.Load data
+"""
+
+"""
+Open a csv file containing phonetic transcribed verbs, inifitive and
+conjugated forms
+"""
+
+
+with open('Files/training_data_set.csv','r') as csvfile:
     readcsv = csv.reader(csvfile, delimiter = ',')
     phoneticinf = []
     phoneticI = []
-
     for row in readcsv:
-        phinf = row[1]
-        phI = row[3]
-        phoneticinf.append(phinf)
-        phoneticI.append(phI)
+        phoneticinf.append(row[1])
+        phoneticI.append(row[3])
 
+cf.dataTest(phoneticinf,phoneticI)  #check training set
 
-'''
-create two dictionaries, one for inifitive forms and another for conjugated forms
-'''
+"""
+Creating two dictionaries, one for inifitive forms and another for conjugated
+forms.
+Each letter must match a phonetic transcription.
+"""
 
 dictioinf = {}
 dictioI = {}
@@ -45,13 +50,16 @@ for item in phoneticinf:
 for item in phoneticI:
     dictioI[item] = cf.coding(item)
 
-# dictioinf.values()
-# dictioI
+# careful with duplicates
+# for key in dictioinf.keys():
+#      if key in phoneticinf:
+#         phoneticinf.remove(key)
+# phoneticinf
 
 
 # split into input (X) and output (Y) variables
-X = dictioinf.values() #input column
-Y = dictioI.values() #output column
+X = dictioinf.values()  # input column
+Y = dictioI.values()  # output column
 
 X
 numpy.array(X)
@@ -60,56 +68,29 @@ len(X)
 X = np.array(list(X))
 Y = np.array(list(Y))
 
-'''
-Check dataset:
-'''
-def dataTest(phoneticinf,phoneticI):
-    i = 1
-    for word in phoneticinf:
-        if str(word[0]) != '#':
-            print ('error: # missing in line {}'.format(i))
-            break
-        else: i = i + 1
-        i = 1
-        for character in word:
-            if str(character) not in dictio:
-                print ('error: char ' + character + ' not in dictionary in word:' + word + ' line ' + str(i))
-                break
-    i = 1
-    for word in phoneticI:
-        if str(word[0]) != '#':
-            print ('error: # missing in line {}'.format(i))
-            break
-        else: i = i + 1
-        i = 1
-        for character in word:
-            if str(character) not in dictio:
-                print ('error: char ' + character + ' not in dictionary in word:' + word + ' line ' + str(i))
-                break
-
-    return 'done'
-
-'''
+"""
 2. Define model
-'''
+"""
 
 model = Sequential()
 model.add(Dense(460, input_shape=(460,), activation='sigmoid'))
 
-'''
-3. Compile model
-'''
+"""
+3. Evaluate model
+"""
 
-model.compile(loss='mean_squared_error', optimizer='adadelta', metrics=['accuracy'])
+"""
+4. Compile model
+"""
+
+model.compile(loss='mean_squared_error', optimizer='adadelta')
 
 '''
 4. Fit model
 '''
 model.fit(X,Y, epochs=20, batch_size=5)
 
-'''
-5. Evaluate model
-'''
+
 
 import numpy as np
 from keras.callbacks import Callback
