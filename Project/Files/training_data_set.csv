@@ -4,7 +4,6 @@ vencer,#vense#,venco,#vensu#
 proteger,#proteje#,protejo,#proteju#
 imaginar,#imajina#,imagino,#imajinu#
 acabar,#akaba#,acabo,#akabu#
-repetir,#hepeti#,repito,#hepitu#
 merecer,#merese#,mereso,#meresu#
 viajar,#viaja#,viajo,#viaju#
 conjugar,#konjuga#,conjugo,#konjugu#
@@ -20,13 +19,13 @@ aguardar,#aguarda#,aguardo,#aguardu#
 ligar,#liga#,ligo,#ligu#
 chover,#xove#,chovo,#xovu#
 gritar,#grita#,grito,#gritu#
-exercer,#ezerse#,exerço,#ezerso#
+exercer,#ezerse#,exerí_o,#ezerso#
 agir,#aji#,ajo,#aju#
 falar,#fala#,falo,#falu#
 levantar,#levanta#,levanto,#levantu#
-ficar,#fika#,fico,#ficu#
+ficar,#fika#,fico,#fiku#
 deixar,#deixa#,deixo,#deixu#
-escolher,#escolier#,escolho,#escoliu#
+escolher,#eskolier#,escolho,#eskoliu#
 ressentir,#hesenti#,ressento,#hesentu#
 julgar,#julga#,julgo,#julgu#
 possuir,#posui#,possuo,#posuu#
@@ -34,10 +33,10 @@ voar,#voa#,voo,#vou#
 nadar,#nada#,nado,#nadu#
 parar,#para#,paro,#paru#
 comer,#kome#,como,#komu#
-permanecer,#permanese#,permaneço,#permanesu#
+permanecer,#permanese#,permaneí_o,#permanesu#
 participar,#partisipa#,participo,#partisipu#
 cativar,#kativa#,cativo,#kativu#
-agradecer,#agradese#,agradeço,#agradesu#
+agradecer,#agradese#,agradeí_o,#agradesu#
 pular,#pula#,pulo,#pulu#
 persentir,#persenti#,persento,#persentu#
 acompanhar,#akompania#,acompanho,#akompaniu#
@@ -47,8 +46,8 @@ desejar,#dezeja#,desejo,#dezeju#
 deslinguar,#deslingua#,deslinguo,#deslinguu#
 casar,#kazar#,caso,#kazu#
 zoar,#zoa#,zoo,#zou#
-conhecer,#konieser#,conheço,#koniesu#
-acontecer,#akonteser#,aconteço,#akontesu#
+conhecer,#konieser#,conheí_o,#koniesu#
+acontecer,#akonteser#,aconteí_o,#akontesu#
 correr,#kohe#,corro,#kohu#
 compreender,#kompreende#,compreendo,#kompreendu#
 vender,#vende#,vendo,#vendu#
@@ -93,7 +92,7 @@ procurar,#prokura#,procuro,#prokuru#
 frigir,#friji#,frijo,#friju#
 caminhar,#kaminia#,caminho,#kaminiu#
 marcar,#marka#,marco,#marku#
-esquecer,#eskece#,esqueco,#eskesu#
+esquecer,#eskese#,esqueco,#eskesu#
 tentar,#tenta#,tento,#tentu#
 decidir,#desidi#,decido,#desidu#
 desistir,#dezisti#,desisto,#dezistu#
@@ -125,7 +124,7 @@ oferecer,#oferese#,ofereco,#oferesu#
 pegar,#pega#,pego,#pEgu#
 encher,#enxe#,encho,#enxu#
 passar,#pasa#,passo,#pasu#
-iniciar,#inicia#,inicio,#iniciu#
+iniciar,#inisia#,inicio,#inisiu#
 morar,#mora#,moro,#mOru#
 dancar,#dansa#,danco,#dansu#
 encontrar,#enkontra#,encontro,#enkontru#
@@ -166,7 +165,7 @@ expelir,#espeli#,expilo,#espilu#
 transpor,#transpo#,transponho,#transponiu#
 prever,#preve#,prevejo,#preveju#
 odiar,#odia#,odeio,#odeiu#
-descrer,#descre#,descreio,#descreiu#
+descrer,#deskre#,descreio,#deskreiu#
 mobiliar,#mobiliar#,mobilio,#mobiliu#
 readequar,#headekua#,readequo,#headEkuu#
 perder,#perde#,perco,#perku#
@@ -306,7 +305,6 @@ desconvir,#deskonvi#,deconvenho,#deskonveniu#
 sortir,#sorti#,surto,#surtu#
 consentir,#konsenti#,consinto,#konsintu#
 interver,#interver#,intervejo,#interveju#
-polir,#poli#,pulo,#pulu#
 contrafazer,#kontrafaze#,contrafaco,#kontrafasu#
 fartar,#fartar#,farto,#fartu#
 idear,#idea#,ideio,#ideiu#
@@ -347,7 +345,7 @@ absorver,#abisorve#,absorvo,#abisorvu#
 ter,#te#,tenho,#teniu#
 rever,#heve#,revejo,#heveju#
 matar,#mata#,mato,#matu#
-expedir,#espedi#,expeço,#espEsu#
+expedir,#espedi#,expeí_o,#espEsu#
 pagar,#paga#,pago,#pagu#
 descalcar,#deskalsa#,descalco,#deskalsu#
 gastar,#gasta#,gasto,#gastu#
@@ -410,4 +408,3 @@ atrair,#atrai#,atraio,#atraiu#
 cultivar,#kultiva#,cultivo,#kultivu#
 esfazer,#esfaze#,esfaco,#esfasu#
 repetir,#hepeti#,repito,#hepitu#
-entreter,#entreteniu#,entretenho,#entreteniu#
