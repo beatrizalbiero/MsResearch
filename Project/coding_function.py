@@ -182,7 +182,7 @@ def compare(list1, list2):
     return list_i
 
 
-def coding(verb):
+def coding(verb,vec=True,verbose=False):
     """
     coding.
 
@@ -192,26 +192,27 @@ def coding(verb):
     :verb type: str
     :rtype: list
     """
+    def vector2string(filter_list, wickelfeatures_list):
+        """
+        vector2string.
+
+        This procedure receives a boolean list of wickelfeatures and returns a
+        string vector of wickelfeatures.
+
+        :filter_list type: list
+        :wickelfeatures_list type: list
+        :rtype: list
+        """
+        vecting = list(compress(wickelfeatures_list, filter_list))
+        return vecting
     table = activate_nodes(verb)
     nodes = compare(wickelfeatures_list, table)
-    return nodes
+    if vec is True and verbose is False:
+        return vector2string(nodes, wickelfeatures_list)  # returns a list of wickelfeatures
+    elif vec is False and verbose is False:
+        return nodes  # returns a list of nodes
+    else:
+        return "verbose = True"
 
 # Example:
-
-
 dar = coding("#dar#")
-
-
-def vector2string(filter_list, wickelfeatures_list):
-    """
-    vector2string.
-
-    This procedure receives a boolean list of wickelfeatures and returns a
-    string vector of wickelfeatures.
-
-    :filter_list type: list
-    :wickelfeatures_list type: list
-    :rtype: list
-    """
-    vecting = list(compress(wickelfeatures_list, filter_list))
-    return vecting
