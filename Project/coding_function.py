@@ -182,7 +182,7 @@ def compare(list1, list2):
     return list_i
 
 
-def coding(verb,vec=True,verbose=False):
+def coding(verb,coded=True,verbose=False):
     """
     coding.
 
@@ -207,12 +207,17 @@ def coding(verb,vec=True,verbose=False):
         return vecting
     table = activate_nodes(verb)
     nodes = compare(wickelfeatures_list, table)
-    if vec is True and verbose is False:
-        return vector2string(nodes, wickelfeatures_list)  # returns a list of wickelfeatures
-    elif vec is False and verbose is False:
+    if coded is False and verbose is True:
+        return vector2string(nodes,wickelfeatures_list)  # returns a list of wickelfeatures
+    elif coded is True and verbose is False:
         return nodes  # returns a list of nodes
+    elif coded is True and verbose is True:
+        for i in range(0, 460):
+            print(wickelfeatures_list[i], ", value: ", nodes[i])
+        return "done"
     else:
-        return "verbose = True"
+        return "one parameter must be set True"
+
 
 # Example:
 dar = coding("#dar#")
