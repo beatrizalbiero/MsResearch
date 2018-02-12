@@ -344,12 +344,3 @@ def decoding(vector2string):
         decoded = decoded + phoneme
 
     return decoded
-
-
-dar = cf.coding('#dar#')  # first, string into vector
-Dar = cf.vector2string(dar, wickelfeatures_list)
-decoding(Dar)
-
-fala = cf.coding('#fala#')  # first, string into vector
-Fala = cf.vector2string(fala, wickelfeatures_list)
-decoding(Fala)
