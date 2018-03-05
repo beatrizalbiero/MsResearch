@@ -213,7 +213,8 @@ def coding(verb,coded=True,verbose=False):
         return nodes  # returns a list of nodes
     elif coded is True and verbose is True:
         for i in range(0, 460):
-            print(wickelfeatures_list[i], ", value: ", nodes[i])
+            if nodes[i] == 1:
+                print(wickelfeatures_list[i], ", value: ", nodes[i])
         return "done"
     else:
         return "one parameter must be set True"

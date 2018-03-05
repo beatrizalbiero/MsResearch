@@ -9,6 +9,7 @@ import numpy as np
 import decoding_function as dec
 from Files import nodes
 wickelfeatures_list = nodes.nds
+import coding_function as cf
 
 
 def decoding(vector):
@@ -67,22 +68,18 @@ def decoding(vector):
     dbeg = ''
     dend = ''
     for i in range(0, 3):
-        dbeg = dbeg + dec.competion(begin['wickelfeatures'], i)
+        dbeg = dbeg + dec.competition(begin['wickelfeatures'], i)
+    print(dbeg)
     for i in range(0, 3):
-        dend = dend + dec.competion(end['wickelfeatures'], i)
+        dend = dend + dec.competition(end['wickelfeatures'], i)
     decoded = dbeg
     while True:
         new_df = find_compatible(begin, dfx)
         prox = list(sixteenbest(new_df)['wickelfeatures'])
-        phoneme = dec.competion(prox, 2)
-        print(phoneme)
+        phoneme = dec.competition(prox, 2)
         decoded = decoded + phoneme
-        print(decoded)
         begin = sixteenbest(new_df)
-        print(dend)
-        if decoded[-2] == dend[0] and decoded[-1] == dend[1]:
-            break
-        if decoded[-1] == '#':
+        if decoded[-2] == dend[0] and decoded[-1] == dend[1] or decoded[-1] == '#':
             break
 
-    return decoded
+    return 'Decodificado Loop: ' + decoded + ', Final antes do Loop: ' + dend
