@@ -18,14 +18,14 @@ def decoding(vector):
     wickelfeatures of a verb.
 
     :vector type: list
-    :r type: str (?)
+    :rtype: str
     """
     def createdf(vector):
         """
         Create a dataframe of wickelfeatures and prediction values.
 
         :vector type: list
-        :r type: dataframe (pandas)
+        :rtype: dataframe (pandas)
         """
         new = np.asarray(vector)
         df = pd.DataFrame()
@@ -38,7 +38,7 @@ def decoding(vector):
         Select sixteen best wickelfeatures.
 
         :df type: df (pandas)
-        :r type: df (pandas)
+        :rtype: df (pandas)
         """
         x = df.sort_values(by = ['values'], axis = 0, ascending = False, inplace = False, kind='quicksort', na_position = 'last')
         r = x.head(16)
