@@ -43,14 +43,14 @@ Rumelhart and McClelland used Wickelfeatures as input units for their neural net
 
 # The Encoding Function
 
-coding_function.py
+Project/coding_function.py
 
 # The Decoding/Binding Function
 
-decoding_function.py
+Project/decoding_function.py
 
 # The Net
-network.py
+Project/network.py
 
 # Jupyter Notebook of my net with premilinar results:
-Network f1 score test.ipynb
+Project/Network f1 score test.ipynb
