@@ -49,6 +49,8 @@ coding_function.py
 
 decoding_function.py
 
-# TODO
-- phonetic transcription of verbs
-- neural networks
+# The Net
+network.py
+
+# Jupyter Notebook of my net:
+Network f1 score test.ipynb
