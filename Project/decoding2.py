@@ -73,13 +73,13 @@ def decoding(vector):
     for i in range(0, 3):
         dend = dend + dec.competition(end['wickelfeatures'], i)
     decoded = dbeg
-    while True:
-        new_df = find_compatible(begin, dfx)
-        prox = list(sixteenbest(new_df)['wickelfeatures'])
-        phoneme = dec.competition(prox, 2)
-        decoded = decoded + phoneme
-        begin = sixteenbest(new_df)
-        if decoded[-2] == dend[0] and decoded[-1] == dend[1] or decoded[-1] == '#':
-            break
+    # while True:
+    #     new_df = find_compatible(begin, dfx)
+    #     prox = list(sixteenbest(new_df)['wickelfeatures'])
+    #     phoneme = dec.competition(prox, 2)
+    #     decoded = decoded + phoneme
+    #     begin = sixteenbest(new_df)
+    #     if decoded[-2] == dend[0] and decoded[-1] == dend[1] or decoded[-1] == '#':
+    #         break
 
     return 'Decodificado Loop: ' + decoded + ', Final antes do Loop: ' + dend
