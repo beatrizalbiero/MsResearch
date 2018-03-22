@@ -2,131 +2,79 @@
 Neural Network with Keras.
 """
 
-
-import keras
+import sys
 from keras.models import Sequential
 from keras.layers import Dense
+from keras_metrics import KerasMetrics
+from keras.callbacks import EarlyStopping
+from keras import optimizers
 import numpy as np
-import random
-import pickle
-import coding_function as cf
-import decoding_function as df
-import csv
-
-# np.random.seed(7)
-
-"""
-1.Load data
-"""
-
-"""
-Open a csv file containing phonetic transcribed verbs, inifitive and
-conjugated forms
-"""
+import decoding2
+#import decoding_function as df
+import utility as ut
+sys.path.append('../')
 
 
-with open('Files/training_data_set.csv','r') as csvfile:
-    readcsv = csv.reader(csvfile, delimiter = ',')
-    phoneticinf = []
-    phoneticI = []
-    for row in readcsv:
-        phoneticinf.append(row[1])
-        phoneticI.append(row[3])
+def pipeline(verbs):
+    """
+    Pipeline receives a list of verbs and decodes it.
 
-cf.dataTest(phoneticinf,phoneticI)  #check training set
+    :verbs type: list
+    :r type: string
+    """
+    import coding_function as cf
+    test_list = []
+    for i in verbs:
+        coding = cf.coding(i)
+        test_list.append(coding)
+    test_list = np.array(test_list)
+    prediction = model.predict(test_list)
+    for i in prediction:
+        print(decoding2.decoding(i))
+    return test_list.shape
 
-"""
-Creating two dictionaries, one for inifitive forms and another for conjugated
-forms.
-Each letter must match a phonetic transcription.
-"""
+# 0. Load Data
+path = '../data/prop_55.csv'  # len 464
+# path = '../data/prop_65.csv'
+# path = '../data/prop_75.csv'
+# path = '../data/prop_85.csv'
+# path = '../data/prop_95.csv'
+X, Y = ut.load_data(path)
+batch = len(X)
 
-dictioinf = {}
-dictioI = {}
-
-for item in phoneticinf:
-    dictioinf[item] = cf.coding(item)
-
-for item in phoneticI:
-    dictioI[item] = cf.coding(item)
-
-# careful with duplicates
-# for key in dictioinf.keys():
-#      if key in phoneticinf:
-#         phoneticinf.remove(key)
-# phoneticinf
-
-
-# split into input (X) and output (Y) variables
-X = dictioinf.values()  # input column
-Y = dictioI.values()  # output column
-
-X
-numpy.array(X)
-len(X)
-
-X = np.array(list(X))
-Y = np.array(list(Y))
-
-"""
-2. Define model
-"""
-
+# 1. Define Model
 model = Sequential()
 model.add(Dense(460, input_shape=(460,), activation='sigmoid'))
 
-"""
-3. Evaluate model
-"""
+# 2. Compile model
+keras_metrics = KerasMetrics()
+model.compile(
+    optimizer='adam',
+    loss='mean_squared_error',
+    metrics=[keras_metrics.fbeta_score,
+             keras_metrics.recall,
+             keras_metrics.precision]
+            )
 
-"""
-4. Compile model
-"""
+# 3. Fit model
+stopper = EarlyStopping(monitor='fbeta_score', min_delta=0.00005, patience=50,
+                        verbose=1, mode='max')
 
-model.compile(loss='mean_squared_error', optimizer='adadelta')
+model.fit(X, Y, epochs=150, batch_size=batch, verbose=False, callbacks=
+          [stopper])
 
-'''
-4. Fit model
-'''
-model.fit(X,Y, epochs=20, batch_size=5)
+# 4. Evaluate model
+scores = model.evaluate(X, Y)
+print("\n%s: %.2f%% \n%s: %.2f%% \n%s: %.2f%%" % (model.metrics_names[1],
+      scores[1]*100, model.metrics_names[2], scores[2]*100,
+      model.metrics_names[3], scores[3]*100))
 
+# 5. Save model
+#model.save('../data/prop_95')
 
+# 6. Test Model with real verbs.
 
-import numpy as np
-from keras.callbacks import Callback
-from sklearn.metrics import confusion_matrix, f1_score, precision_score, recall_score
-class Metrics(Callback):
-def on_train_begin(self, logs={}):
- self.val_f1s = []
- self.val_recalls = []
- self.val_precisions = []
-
-def on_epoch_end(self, epoch, logs={}):
- val_predict = (np.asarray(self.model.predict(self.model.validation_data[0]))).round()
- val_targ = self.model.validation_data[1]
- _val_f1 = f1_score(val_targ, val_predict)
- _val_recall = recall_score(val_targ, val_predict)
- _val_precision = precision_score(val_targ, val_predict)
- self.val_f1s.append(_val_f1)
- self.val_recalls.append(_val_recall)
- self.val_precisions.append(_val_precision)
- print “ — val_f1: %f — val_precision: %f — val_recall %f” %(_val_f1, _val_precision, _val_recall)
- return
-
-metrics = Metrics()
-#F1_score
-#https://en.wikipedia.org/wiki/F1_score
-#https://medium.com/@thongonary/how-to-compute-f1-score-for-each-epoch-in-keras-a1acd17715a2
-#threshold on numpy
-# import numpy as np
-#
-# a = np.array([[0.2, 0.3, 0.5, 0.7, 0.9, 0.8],
-#               [0.2, 0.4, 0.5, 0.9, 0.3, 0.1]])
-# np.where(a >= 0.5, 1, 0)
-
-'''
-threshold
-'''
-a = np.array([[0.2, 0.3, 0.5, 0.7, 0.9, 0.8],
-              [0.2, 0.4, 0.5, 0.9, 0.3, 0.1]])
-np.where(a >= 0.5, 1, 0)
+pipeline(['#pega#', '#sega#', '#seka#', '#leva#', '#ora#', '#mora#', '#posta#',
+          '#joga#', '#sortia#', '#media#', '#kompo#', '#po#', '#tendi#',
+          '#jenti#', '#menti#', '#hendi#', '#tosi#', '#kobri#', '#faze#',
+          '#mata#', '#paga#', '#sai#', '#bate#', '#kome#'])
