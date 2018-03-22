@@ -52,5 +52,5 @@ decoding_function.py
 # The Net
 network.py
 
-# Jupyter Notebook of my net:
+# Jupyter Notebook of my net with premilinar results:
 Network f1 score test.ipynb
