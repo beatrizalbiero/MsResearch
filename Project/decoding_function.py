@@ -173,14 +173,14 @@ def find_compatible(list1, list2):
 
 
 '''
-competion:
+:
 given a set of wickelfeatures, it returns the most likely phoneme
 '''
 
 
-def competion(vector2string, position):
+def competition(vector2string, position):
     """
-    Competion.
+    competition.
 
     This function will receive a vector2string argument and a position.
     Given this vector2string, phonemes will compete for wickelfeatures.
@@ -335,7 +335,7 @@ def decoding(vector2string):
     while len(new_wicklftrs) > 16:
 
         # decodes the next phoneme
-        phoneme = competion(new_wicklftrs, 2)
+        phoneme = competition(new_wicklftrs, 2)
 
         # does this until last phoneme is decoded
         new_wicklftrs = find_compatible(new_wicklftrs, vector2string)
