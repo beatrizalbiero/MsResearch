@@ -4,6 +4,7 @@ import pandas as pd
 import csv
 import coding_function as cf
 import numpy as np
+from pathlib import Path
 
 
 def load_data(path):

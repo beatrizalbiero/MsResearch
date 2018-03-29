@@ -1,37 +1,57 @@
-"""
-Neural Network with Keras.
-"""
+"""Neural Network with Keras."""
 
 import sys
 from keras.models import Sequential
 from keras.layers import Dense
 from keras_metrics import KerasMetrics
 from keras.callbacks import EarlyStopping
-from keras import optimizers
 import numpy as np
 import decoding2
-#import decoding_function as df
 import utility as ut
 sys.path.append('../')
 
 
-def pipeline(verbs):
+def pipeline(verbs, path, load):
     """
-    Pipeline receives a list of verbs and decodes it.
+    Pipeline receives a list of verbs and predicts a conjugated form for them.
 
+    The prediction is saved in an output file.
     :verbs type: list
-    :r type: string
+    :rtype: string
     """
     import coding_function as cf
+    from time import gmtime, strftime
+    time = strftime("%Y-%m-%d_%H:%M:%S", gmtime())
+    name = "output" + time + ".txt"
+
+    correct = {'#pega#': '#pEgu', '#sega#': '#sEgu#', '#seka#': '#sEku#',
+               '#leva#': '#lEvu#', '#ora#': '#Oru#', '#mora#': '#mOru#',
+               '#posta#': '#pOtu#', '#joga#': '#jOgu#', '#sortia#': '#soiu#',
+               '#media#': '#medeiu#', '#kompo#': '#koiu#', '#po#': '#poiu#',
+               '#menti#': '#mintu#', '#tosi#': '#tusu#', '#kobri#':
+               '#kubro#', '#faze#': '#fasu#', '#mata#': '#matu#', '#paga#':
+               '#pagu#', '#sai#': '#saiu#', '#bate#': '#batu#', '#kome#':
+               '#komu#'}
+
+    f = open('Files/Results/' + name, "w")
+    f.write("train data set:" + path + '\n' + 'Results:\n' + 'model name: ' +
+            load + '\n')
     test_list = []
     for i in verbs:
         coding = cf.coding(i)
         test_list.append(coding)
     test_list = np.array(test_list)
     prediction = model.predict(test_list)
-    for i in prediction:
-        print(decoding2.decoding(i))
-    return test_list.shape
+    for i, j in list(zip(verbs, prediction)):
+        f.write('verb: ' + i + ", expected: " + correct[i] + ", prediction: " +
+                decoding2.decoding(j) + '\n')
+    scores = model.evaluate(X, Y)
+    f.write("\n%s: %.2f%% \n%s: %.2f%% \n%s: %.2f%%" %
+            (model.metrics_names[1], scores[1]*100,
+             model.metrics_names[2], scores[2]*100,
+             model.metrics_names[3], scores[3]*100))
+    f.close()
+    return print("Predictions saved in the file: " + name)
 
 # 0. Load Data
 path = '../data/prop_55.csv'  # len 464

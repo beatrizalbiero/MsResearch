@@ -1,0 +1,28 @@
+train data set:../data/prop_55.csv
+Results:
+model name: ../data/prop_85
+verb: #pega#, expected: #pEgu, prediction: Resposta:#beku#
+verb: #sega#, expected: #sEgu#, prediction: Resposta:#segu#
+verb: #seka#, expected: #sEku#, prediction: Resposta:#siku#
+verb: #leva#, expected: #lEvu#, prediction: Resposta:#lesu#
+verb: #ora#, expected: #Oru#, prediction: Resposta:#iaru#
+verb: #mora#, expected: #mOru#, prediction: Resposta:#biru#
+verb: #posta#, expected: #pOtu#, prediction: Resposta:#bOtu#
+verb: #joga#, expected: #jOgu#, prediction: Resposta:#xogu#
+verb: #sortia#, expected: #soiu#, prediction: Resposta:#suiu#
+verb: #media#, expected: #medeiu#, prediction: Resposta:#meiu#
+verb: #kompo#, expected: #koiu#, prediction: Resposta:#koiu#
+verb: #po#, expected: #poiu#, prediction: Resposta:#poiu#
+verb: #menti#, expected: #mintu#, prediction: Resposta:#mitu#
+verb: #tosi#, expected: #tusu#, prediction: Resposta:#tofu#
+verb: #kobri#, expected: #kubro#, prediction: Resposta:#koru#
+verb: #faze#, expected: #fasu#, prediction: Resposta:#fasu#
+verb: #mata#, expected: #matu#, prediction: Resposta:#matu#
+verb: #paga#, expected: #pagu#, prediction: Resposta:#babu#
+verb: #sai#, expected: #saiu#, prediction: Resposta:#saiu#
+verb: #bate#, expected: #batu#, prediction: Resposta:#baiu#
+verb: #kome#, expected: #komu#, prediction: Resposta:#koiu#
+
+fbeta_score: 84.94% 
+recall: 80.54% 
+precision: 89.99%
