@@ -114,8 +114,6 @@ botar,#bota#,boto,#bOtu#
 botar,#bota#,boto,#bOtu#
 tocar,#toka#,toco,#tOku#
 focar,#foka#,foco,#fOku#
-mostrar,#mostra#,mostro,#mOstru#
-chorar,#xora#,choro,#xOru#
 colocar,#koloka#,coloco,#kolOku#
 informar,#informa#,informo,#infOrmu#
 tornar,#torna#,torno,#tOrnu#
@@ -123,15 +121,12 @@ boiar,#boia#,boio,#bOiu#
 botar,#bota#,boto,#bOtu#
 tocar,#toka#,toco,#tOku#
 focar,#foka#,foco,#fOku#
-mostrar,#mostra#,mostro,#mOstru#
-chorar,#xora#,choro,#xOru#
 notar,#nota#,noto,#nOtu#
 tostar,#tostar#,tosto,#tOstu#
 trocar,#troka#,troco,#trOku#
 robocar,#heboka#,reboco,#hebOku#
 socar,#soka#,soco,#sOku#
 cocar,#kosa#,coco,#kOsu#
-tomar,#toma#,tomo,#tOmu#
 recortar,#hekorta#,#recorto,#hekOrtu#
 impedir,#impedi#,impeco,#impEsu#
 pedir,#pedi#,peco,#pEsu#
@@ -377,7 +372,6 @@ viajar,#viaja#,viajo,#viaju#
 conjugar,#konjuga#,conjugo,#konjugu#
 plantar,#planta#,planto,#plantu#
 enviar,#envia#,envio,#enviu#
-crescer,#krese#,cresso,#kresu#
 andar,#anda#,ando,#andu#
 lambuzar,#lambuza#,lambuzo,#lambuzu#
 estudar,#estuda#,estudo,#istudu#
@@ -386,7 +380,6 @@ aguardar,#aguarda#,aguardo,#aguardu#
 ligar,#liga#,ligo,#ligu#
 chover,#xove#,chovo,#xovu#
 gritar,#grita#,grito,#gritu#
-exercer,#ezerse#,exerco,#ezersu#
 agir,#aji#,ajo,#aju#
 falar,#fala#,falo,#falu#
 levantar,#levanta#,levanto,#levantu#
@@ -397,11 +390,9 @@ possuir,#posui#,possuo,#posuu#
 voar,#voa#,voo,#vou#
 nadar,#nada#,nado,#nadu#
 parar,#para#,paro,#paru#
-comer,#kome#,como,#komu#
 permanecer,#permanese#,permaneco,#permanesu#
 participar,#partisipa#,participo,#partisipu#
 cativar,#kativa#,cativo,#kativu#
-agradecer,#agradese#,agradeco,#agradesu#
 pular,#pula#,pulo,#pulu#
 acompanhar,#akompania#,acompanho,#akompaniu#
 dividir,#dividi#,divido,#dividu#
@@ -412,14 +403,12 @@ casar,#kazar#,caso,#kazu#
 zoar,#zoa#,zoo,#zou#
 acontecer,#akonteser#,aconteco,#akontesu#
 conhecer,#konieser#,conheco,#koniesu#
-correr,#kohe#,corro,#kohu#
 compreender,#kompreende#,compreendo,#kompreendu#
 vender,#vende#,vendo,#vendu#
 ensinar,#ensina#,ensino,#ensinu#
 realizar,#healiza#,realizo,#healisu#
 mudar,#muda#,mudo,#mudu#
 permitir,#permiti#,permito,#permitu#
-sofrer,#sofre#,sofro,#sofru#
 atribuir,#atribui#,atribuo,#atribuu#
 convidar,#konvida#,convido,#konvidu#
 erigir,#eriji#,erijo,#eriju#
@@ -427,7 +416,6 @@ analisar,#analiza#,analizo,#analisu#
 ocorrer,#okohe#,ocorro,#okohu#
 dissolver,#disouve#,dissolvo,#disouvu#
 comprazer,#kompraze#,comprazo,#komprazu#
-mexer,#mexe#,mexo,#mexu#
 precisar,#presiza#,preciso,#presizu#
 corrigir,#kohijir#,corrijo,#kohiju#
 respeitar,#hespeita#,respeito,#hespeitu#
@@ -435,7 +423,6 @@ lavar,#lava#,lavo,#lavu#
 varrer,#vahe#,varro,#vahu#
 beijar,#beija#,beijo,#beiju#
 educar,#eduka#,educo,#eduku#
-descer,#dese#,desco,#desu#
 dirigir,#diriji#,dirijo,#diriju#
 comprar,#kompra#,compro,#kompru#
 achar,#axa#,acho,#axu#
@@ -454,7 +441,6 @@ procurar,#prokura#,procuro,#prokuru#
 frigir,#friji#,frijo,#friju#
 caminhar,#kaminia#,caminho,#kaminiu#
 marcar,#marka#,marco,#marku#
-esquecer,#eskese#,esqueco,#eskesu#
 tentar,#tenta#,tento,#tentu#
 decidir,#desidi#,decido,#desidu#
 desistir,#dezisti#,desisto,#dezistu#
