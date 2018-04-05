@@ -81,4 +81,4 @@ def decoding(vector):
     #     if decoded[-2] == dend[0] and decoded[-1] == dend[1] or decoded[-1] == '#':
     #         break
 
-    return 'Resposta:' + dbeg + dend #'Decodificado Loop: ' + decoded + ', Final antes do Loop: ' + dend
+    return dbeg + dend #'Decodificado Loop: ' + decoded + ', Final antes do Loop: ' + dend
