@@ -6,7 +6,7 @@ import coding_function as cf
 import numpy as np
 
 
-def load_data(path, len_set=False):
+def load_data(path, verbose=False):
     """
     Create a pandas data frame.
 
@@ -15,10 +15,10 @@ def load_data(path, len_set=False):
     'f person': the verb's first person conjugation (in portuguese),
     'vec_I': the coded conjugate form.
 
-    If len_set is True, returns the lenght of the unique values of the dataset.
+    If verbose is True, returns the lenght of the unique values of the dataset.
 
     :path type: string
-    :len_set type: bool
+    :verbose type: bool
     :r type: tuple
     """
     with open(path, 'r') as csvfile:
@@ -28,20 +28,21 @@ def load_data(path, len_set=False):
         for row in readcsv:
             phoneticinf.append(row[1])
             phoneticI.append(row[3])
-        cf.dataTest(phoneticinf, phoneticI)  # tests if dataset is ok
-        vec_inf = []
-        vec_I = []
-        for item in phoneticinf:
-            vec_inf.append(cf.coding(item))
-        for item in phoneticI:
-            vec_I.append(cf.coding(item))
-        d = {'infinitive': phoneticinf, 'vec_inf': vec_inf,
-             'f person': phoneticI, 'vec_I': vec_I}
-        df = pd.DataFrame(data=d)
-        X = np.array(df['vec_inf'].tolist())
-        Y = np.array(df['vec_I'].tolist())
-        if len_set is False:
-            return X, Y
-        else:
-            print(len(set(phoneticinf)))
-            return X, Y
+    cf.dataTest(phoneticinf, phoneticI)  # tests if dataset is ok
+    vec_inf = []
+    vec_I = []
+    for item in phoneticinf:
+        vec_inf.append(cf.coding(item))
+    for item in phoneticI:
+        vec_I.append(cf.coding(item))
+    d = {'infinitive': phoneticinf, 'vec_inf': vec_inf,
+         'f person': phoneticI, 'vec_I': vec_I}
+    df = pd.DataFrame(data=d)
+    X = np.array(df['vec_inf'].tolist())
+    Y = np.array(df['vec_I'].tolist())
+    if verbose is False:
+        return X, Y
+    else:
+        print('unique verbs:', len(set(phoneticinf)), '\n')
+        print('lenght of data set:', len(X))
+        return X, Y
