@@ -40,7 +40,9 @@ def decoding(vector):
         :df type: df (pandas)
         :rtype: df (pandas)
         """
-        x = df.sort_values(by = ['values'], axis = 0, ascending = False, inplace = False, kind='quicksort', na_position = 'last')
+        x = df.sort_values(by=['values'], axis=0, ascending=False,
+                           inplace=False, kind='quicksort',
+                           na_position='last')
         r = x.head(16)
         return r.sort_index(axis=0)
 
@@ -57,7 +59,9 @@ def decoding(vector):
         df3 = pd.DataFrame()
         df2['aux'] = ''
         for index, row in df2.iterrows():
-            df2.iloc[index, df2.columns.get_loc('aux')] = row['wickelfeatures'][0] + row['wickelfeatures'][1]
+            df2.iloc[index,
+                     df2.columns.get_loc('aux')] = (row['wickelfeatures'][0] +
+                                                    row['wickelfeatures'][1])
         for index, row in df1.iterrows():
             last_two = row[0][-2]+row[0][-1]
             df3 = df3.append(df2[df2['aux'].isin([last_two])])
