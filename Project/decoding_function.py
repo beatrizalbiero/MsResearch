@@ -185,7 +185,7 @@ def competition(vector2string, position):
     This function will receive a vector2string argument and a position.
     Given this vector2string, phonemes will compete for wickelfeatures.
 
-    :vector2string type: list
+    :vector2string type: df pandas
     :position type: int
     :rtype: str
     """
