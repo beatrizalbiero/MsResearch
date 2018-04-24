@@ -2,19 +2,19 @@
 
 |          | Whole Corpus | Corpus without non-family Verbs | Total Regular Verbs | Total Irregular Verbs |
 |:--------:|:------------:|:----------------------------------:|:-------------------:|:---------------------:|
-| Absolute |      410     |                 396                |         209         |          187          |
+| Absolute |      416     |                 396                |         209         |          187          |
 |     %    |       -      |                 100                |         52.7        |          47.2         |
 
 # Classes of Irregularities
 
 
-| iar -> eiu | o_ar -> O_u | o_ir -> u_o | izer -> igu | fazer -> fasu | ler, crer -> eiu | entir -> intu | edir -> Esu |
+| iar: eiu | o_ar: O_u | o_ir: u_o | izer: igu | fazer: fasu | ler, crer: eiu | entir: intu | edir: Esu |
 |:----------:|-------------|-------------|-------------|---------------|------------------|---------------|-------------|
 |      8     | 21          | 5           | 7           | 16            | 5                | 8             | 7           |
 
-| or -> oniu | e_ir -> i_u | o_ir -> u_o | ter -> teniu | e_ar -> E_u  | ver -> veju | vir -> veniu |
-|:----------:|-------------|-------------|--------------|--------------|-------------|--------------|
-|     25     | 26          | 5           | 16           | 11           | 6           | 10           |
+| or: oniu | e_ir: i_u | ter: teniu | e_ar: E_u  | ver: veju | vir: veniu |
+|:----------:|-------------|--------------|--------------|-------------|--------------|
+|     25     | 26          | 16           | 11           | 6           | 10           |
 
 # Non Family Verbs
 

@@ -54,17 +54,17 @@ def dataTest(phoneticinf, phoneticI):
     return 'done'
 
 
-def trigramizer(verb):
+def trigramizer(verb, n=3):
     """
     Trigramizer.
 
     This procedure receives a verb and returns a list of all trigrams.
 
     :type verb: str
+    :type N: int (default = 3)
     :rtype: list
     """
-    N = 3
-    trigrams = zip(*(islice(seq, index, None) for index, seq in enumerate(tee(verb, N))))
+    trigrams = zip(*(islice(seq, index, None) for index, seq in enumerate(tee(verb, n))))
     return list(trigrams)
 
 
