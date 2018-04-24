@@ -166,7 +166,7 @@ def compare(list1, list2):
     This procedure simply compares a list of wickelfeatures (of the required
     verb) with the table of all possible wickelfeatures (the
     wickelfeatures_list)
-    It is a boolean vector with length 460.
+    It returns a boolean vector with length 460.
 
     :list1 type: list
     :list2 type: list
@@ -182,7 +182,7 @@ def compare(list1, list2):
     return list_i
 
 
-def coding(verb,coded=True,verbose=False):
+def coding(verb, coded=True, verbose=False):
     """
     coding.
 
@@ -208,7 +208,7 @@ def coding(verb,coded=True,verbose=False):
     table = activate_nodes(verb)
     nodes = compare(wickelfeatures_list, table)
     if coded is False and verbose is True:
-        return vector2string(nodes,wickelfeatures_list)  # returns a list of wickelfeatures
+        return vector2string(nodes, wickelfeatures_list)  # returns a list of wickelfeatures
     elif coded is True and verbose is False:
         return nodes  # returns a list of nodes
     elif coded is True and verbose is True:
