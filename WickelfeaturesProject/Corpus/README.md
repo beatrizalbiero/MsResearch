@@ -105,7 +105,7 @@ The table below exhibits the verbs that form the test and train corpora accordin
 
 ## corpus_separated_by_classes.csv
 
-This folder contains multiple .csv files. Each file concerns to a family of verbs and contains all the verbs that belong to such family.
+This folder contains multiple .csv files. Each file concerns a family of verbs and contains all the verbs that belong to such family.
 
 ## corpus_different_proportions.csv
 
