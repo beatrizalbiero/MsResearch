@@ -1,22 +1,22 @@
-# Corpus
+# The Corpus
 
 |          | Whole Corpus | Corpus without non-family Verbs | Total Regular Verbs | Total Irregular Verbs |
 |:--------:|:------------:|:----------------------------------:|:-------------------:|:---------------------:|
-| Absolute |      416     |                 396                |         209         |          187          |
-|     %    |       -      |                 100                |         52.7        |          47.2         |
+| Absolute |      423     |                 403                |         214         |          209          |
+|     %    |       -      |                 100                |      50.59           |         49.40          |
 
-# Classes of Irregularities
+## Classes of Irregularities
 
 
 | iar: eiu | o_ar: O_u | o_ir: u_o | izer: igu | fazer: fasu | ler, crer: eiu | entir: intu | edir: Esu |
 |:----------:|-------------|-------------|-------------|---------------|------------------|---------------|-------------|
-|      8     | 21          | 5           | 7           | 16            | 5                | 8             | 7           |
+|      9     | 30          | 7           | 7           | 15            | 5                | 8             | 7           |
 
 | or: oniu | e_ir: i_u | ter: teniu | e_ar: E_u  | ver: veju | vir: veniu |
 |:----------:|-------------|--------------|--------------|-------------|--------------|
-|     25     | 26          | 15           | 12           | 6           | 10           |
+|     27     | 27          | 10           | 20           | 6           | 11           |
 
-# Non Family Verbs
+## Non-Family Verbs - Total: 20
 
 requerer -> requero
 <br/>
@@ -60,30 +60,53 @@ parir -> pairo
 <br/>
 perder -> perco
 
+---
+
 # Files
 
-## train_corpus.csv
+## treated_corpus.csv - Total: 403
+
+This is the file containing all verbs except those considered "non-family" verbs.
+
+--------
+## Test and Train Corpora
+
+The table below exhibits the verbs that form the test and train corpora according to the number/proportion of regular and irregular verbs.
+
+|       | Regulars | Irregulars | Total | %     |
+|-------|----------|------------|-------|-------|
+| Test  | 42       | 36         | 78    | 19.35 |
+| Train | 172      | 153        | 325   | 80.65 |
+| Total | 214      | 189        | 403   | 100   |
+
+## train_corpus.csv - Total: 325
 
 | iar: eiu | o_ar: O_u | o_ir: u_o | izer: igu | fazer: fasu | ler, crer: eiu | entir: intu | edir: Esu |
 |:----------:|-------------|-------------|-------------|---------------|------------------|---------------|-------------|
-|      6     |  17         |     4      |  6         |      13       |        5        |   6           |       6     | |
+|      7     |  24         |     6      |  6         |      12       |        4        |   6           |       6     | |
 
-| or: oniu | e_ir: i_u | ter: teniu | e_ar: E_u  | ver: veju | vir: veniu |
-|:----------:|-------------|--------------|--------------|-------------|--------------|
-|     20     |      21     |   12         |       9    |        5    |      8     | |
+| or: oniu | e_ir: i_u | ter: teniu | e_ar: E_u  | ver: veju | vir: veniu | regulars|
+|:----------:|-------------|--------------|--------------|-------------|--------------|---|
+|     22     |      22     |   8         |       16    |        5    |      8     | 172 |
 
-## test_corpus.csv
+## test_corpus.csv - Total: 78
 
 | iar: eiu | o_ar: O_u | o_ir: u_o | izer: igu | fazer: fasu | ler, crer: eiu | entir: intu | edir: Esu |
 |:----------:|-------------|-------------|-------------|---------------|------------------|---------------|-------------|
-|      2     |      4       |   1        |   1        |         3    |       1         |   2           |       1     | |
+|      2     |      6       |   1        |   1        |         3    |       1         |   2           |       1     | |
 
-| or: oniu | e_ir: i_u | ter: teniu | e_ar: E_u  | ver: veju | vir: veniu |
-|:----------:|-------------|--------------|--------------|-------------|--------------|
-|    5      |     5      |  3          |     3      |       1     |     2      | |
+| or: oniu | e_ir: i_u | ter: teniu | e_ar: E_u  | ver: veju | vir: veniu | regulars|
+|:----------:|-------------|--------------|--------------|-------------|--------------|---|
+|    5      |     5      |  2          |     4      |       1     |     2      | 42 |
 
+---
 
+# Folders
 
-# To do:
+## corpus_separated_by_classes.csv
 
-- Separar o corpus de test e train
+This folder contains multiple .csv files. Each file concerns to a family of verbs and contains all the verbs that belong to such family.
+
+## corpus_different_proportions.csv
+
+This folder contains multiple different datasets (.csv). The regular-irregular verb ratio varies per dataset.
