@@ -24,27 +24,20 @@ def dataTest(phoneticinf, phoneticI):
     :type phoneticI: list
     :rtype: str
     """
-    i = 1
-    for word in phoneticinf:
+    for i, word in enumerate(phoneticinf):
         if str(word[0]) != '#':
-            print('error: # missing in line {}'.format(i))
+            print('dataTest1: error: # missing in line {}'.format(i+1), word)
             break
-        else:
-            i = i + 1
-        i = 1
         for letter in word:
             if str(letter) not in dct.dictio:
                 print('error: char ' + letter +
                       ' not in dictionary in word:' + word + ' line ' + str(i))
                 break
-    i = 1
-    for word in phoneticI:
+
+    for i, word in enumerate(phoneticI):
         if str(word[0]) != '#':
-            print('error: # missing in line {}'.format(i))
+            print('dataTest2: error: # missing in line {}'.format(i+1), word)
             break
-        else:
-            i = i + 1
-        i = 1
         for character in word:
             if str(character) not in dct.dictio:
                 print('error: char ' + character +
@@ -54,19 +47,19 @@ def dataTest(phoneticinf, phoneticI):
     return 'done'
 
 
-def trigramizer(verb, n=3):
+def trigramizer(word):
     """
     Trigramizer.
 
     This procedure receives a verb and returns a list of all trigrams.
 
     :type verb: str
-    :type N: int (default = 3)
-    :rtype: list
+    :rtype: list of lists
     """
-    trigrams = zip(*(islice(seq, index, None) for index, seq in enumerate(tee(verb, n))))
-    return list(trigrams)
-
+    trigrams = []
+    for i in range(len(word)-2):
+        trigrams.append([word[i], word[i+1], word[i+2]])
+    return trigrams
 
 def create_matrix(trigrams_list):
     """
