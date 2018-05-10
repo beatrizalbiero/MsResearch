@@ -39,7 +39,7 @@ Rumelhart and McClelland used Wickelfeatures as input units for their neural net
 
 # The Corpus
 
-All the necessary information about the corpus can be found [here](https://github.com/beatrizalbiero/MsResearch/tree/master/Project/Corpus).
+All the necessary information about the corpus can be found [here](https://github.com/beatrizalbiero/MsResearch/tree/master/WickelfeaturesProject/Corpus).
 
 # The Wickelfeatures Net
 
