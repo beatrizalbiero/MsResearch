@@ -49,18 +49,18 @@ This is the net scheme that I've built to predict conjugations for Brazilian Por
 
 # The Wickelfeatures Encoding Function
 
-The [code](https://github.com/beatrizalbiero/MsResearch/blob/master/Project/coding_function.py) for how I've turned verbs into Wickelfeatures.
+The [code](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/coding_function.py) for how I've turned verbs into Wickelfeatures.
 
 # The Decoding/Binding Function
 
-The [code](https://github.com/beatrizalbiero/MsResearch/blob/master/Project/decoding2.py) for how I've tried to decode Wickelfeatures back into verbs.
+The [code](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/decoding2.py) for how I've tried to decode Wickelfeatures back into verbs.
 
 # The Wickelfeatures Net
 
-To build this [net](https://github.com/beatrizalbiero/MsResearch/blob/master/Project/network.py), I've used the API [KERAS](https://keras.io/)
+To build this [net](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/network.py), I've used the API [KERAS](https://keras.io/)
 
 
 
 # Jupyter Notebook of my net with premilinar results:
 
-A preview of my experiments and results can be found [here](https://github.com/beatrizalbiero/MsResearch/blob/master/Project/Network.ipynb)!
+A preview of my experiments and results can be found [here](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/Network.ipynb)!
