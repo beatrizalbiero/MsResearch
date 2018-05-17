@@ -4,7 +4,7 @@ import csv
 import coding_function as cf
 import pickle
 
-path = 'Corpus/corpus_completo.csv'
+path = 'Corpus/treated_corpus.csv'
 
 
 def load_corpus(path, verbose=False):
@@ -37,20 +37,18 @@ def load_corpus(path, verbose=False):
 
 def ngrams_generator():
     """Create a file with trigrams."""
+    import itertools
     infinitive, conjugated = load_corpus(path)
     corpus = infinitive + conjugated
-
     trigrams = list()
     for item in corpus:
         trigrams.append(cf.trigramizer(item))
-
     grams = list()
     for sublist in trigrams:
         for item in sublist:
             grams.append(item)
-
-    trigrams = list(set(grams))
-
+    grams.sort()
+    trigrams = list(k for k, _ in itertools.groupby(grams))
     with open("trigrams.txt", "wb") as fp:   # Pickling
             pickle.dump(trigrams, fp)
 
@@ -62,12 +60,10 @@ def activation(verb):
     :type verb: string
     :r type: list (boolean vector)
     """
-    import pickle
-    with open("trigrams.txt", "rb") as fp:   # Unpickling
-            trigrams = pickle.load(fp)
-    verb_trigram = cf.trigramizer('#kosa#')
-    nodes = [0]*1068
-    for i, trigram_i in enumerate(trigrams):
+    from trigrams_nodes import trigrams_dict
+    verb_trigram = cf.trigramizer(verb)
+    nodes = [0]*1060
+    for i, trigram_i in enumerate(trigrams_dict):
         for trigram_j in verb_trigram:
             if trigram_i == trigram_j:
                 nodes[i] = 1
