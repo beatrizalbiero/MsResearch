@@ -4,6 +4,7 @@ import pandas as pd
 import csv
 import coding_function as cf
 import numpy as np
+from ngrams_nodes import activation
 
 
 def load_data(path, verbose=False):
@@ -44,5 +45,39 @@ def load_data(path, verbose=False):
         return X, Y
     else:
         print('unique verbs:', len(set(phoneticinf)), '\n')
+        print('lenght of data set:', len(X))
+        return X, Y
+
+
+def load_ngrams(path, verbose=False):
+    """
+    Activation of nodes.
+
+    :type verb: string
+    :r type: numpy array (boolean vector)
+    """
+    with open(path, 'r') as csvfile:
+        readcsv = csv.reader(csvfile, delimiter=',')
+        infinitive = []
+        conjugated = []
+        for row in readcsv:
+            infinitive.append(row[1])
+            conjugated.append(row[3])
+    cf.dataTest(infinitive, conjugated)  # tests if dataset is ok
+    vec_inf = []
+    vec_con = []
+    for item in infinitive:
+        vec_inf.append(activation(item))
+    for item in conjugated:
+        vec_con.append(activation(item))
+    d = {'infinitive': infinitive, 'vec_inf': vec_inf,
+         'f person': conjugated, 'vec_con': vec_con}
+    df = pd.DataFrame(data=d)
+    X = np.array(df['vec_inf'].tolist())
+    Y = np.array(df['vec_con'].tolist())
+    if verbose is False:
+        return X, Y
+    else:
+        print('unique verbs:', len(set(infinitive)), '\n')
         print('lenght of data set:', len(X))
         return X, Y
