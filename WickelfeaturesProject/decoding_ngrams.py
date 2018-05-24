@@ -1,6 +1,8 @@
 def decoding(vector):
     """
-    Receive a vector that represents the activation of trigrams and decode it back to a verb.
+    Receive a vector that represents the activation of trigrams and decode it
+    back to a verb.
+
     :vector type: numpy array (ou lista???)
     :r type: string
     """
@@ -13,7 +15,6 @@ def decoding(vector):
         """
         import pandas as pd
         from trigrams_nodes import trigrams_dict
-        new = np.asarray(vector)
         df = pd.DataFrame()
         df['trigram'] = trigrams_dict
         df['value'] = vector
@@ -42,7 +43,6 @@ def decoding(vector):
         :df2 type: df
         :r type: df
         """
-
         import pandas as pd
 
         df3 = pd.DataFrame()
@@ -56,20 +56,18 @@ def decoding(vector):
             df3 = df3.append(df2[df2['aux'].isin([last_two])])
         return df3
 
-    df = createdf(vector) # df com todos os trigramas e seus respectivos valores
+    df = createdf(vector)  # df com todos os trigramas e seus respectivos valores
 
     first = df[:117]
     decoded = []
-    decoded = best(first,1)
+    decoded = best(first, 1)
 
     i = 0
     while decoded.tail(1).iloc[0]['trigram'][-1] != '#':
-        new = best(find_compatible(decoded.tail(1), df),1)
-        decoded = decoded.append(new[['trigram','value']])
+        new = best(find_compatible(decoded.tail(1), df), 1)
+        decoded = decoded.append(new[['trigram', 'value']])
         i += 1
         if i > 8:
             break
-
-
 
     return decoded
