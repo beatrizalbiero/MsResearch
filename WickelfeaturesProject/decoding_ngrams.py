@@ -1,9 +1,17 @@
-def decoding(vector):
+"""Decodification of ngrams."""
+
+import pandas as pd
+from trigrams_nodes import trigrams_dict
+
+
+def decoding(vector, verbose=False):
     """
     Receive a vector that represents the activation of trigrams and decode it
-    back to a verb.
+    back to a verb. You can choose to display the string or the dataset with
+    the values.
 
-    :vector type: numpy array (ou lista???)
+    :vector type: numpy array
+    :verbose type: boolean
     :r type: string
     """
     def createdf(vector):
@@ -13,8 +21,6 @@ def decoding(vector):
         :vector type: list
         :rtype: dataframe (pandas)
         """
-        import pandas as pd
-        from trigrams_nodes import trigrams_dict
         df = pd.DataFrame()
         df['trigram'] = trigrams_dict
         df['value'] = vector
@@ -36,7 +42,6 @@ def decoding(vector):
     def find_compatible(df1, df2):
         """
         Find Compatible.
-
         returns a new df with compatible trigrams
 
         :df1 type: df
@@ -70,4 +75,10 @@ def decoding(vector):
         if i > 8:
             break
 
-    return decoded
+    if verbose is True:
+        return decoded
+    else:
+        joining = ''.join(decoded['trigram'].iloc[0])
+        for item in decoded['trigram'].iloc[1:]:
+            joining = joining + item[2]
+        return joining
