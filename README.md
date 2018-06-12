@@ -28,14 +28,28 @@ Each phoneme has its own phonological features. According to Rumelhart and McCle
 | Int   | Stop   | b     | p   | d      | t   | g    | k   |
 |       | Nasal  | m     | _   | n      | _   | N    | _   |
 | Cont  | Fric   | v/D   | f/T | z      | s   | Z/j  | S/C |
-|       | Liq/SV | w/l   | _   | r      | _   | y    | h   |
-| Vowel | High   | E     | i   | O      | ^   | U    | u   |
-|       | Low    | A     | e   | I      | a   | W    | o   |
+|       | Liq/SV | l   | _   | r      | _   | y    | h   |
+| Vowel | High   | e     | i   |       | ^   | u    | u   |
+|       | Low    |      | E   |       | a   |     | O   |
 
 
 In a trigram of phonemes, each phoneme may be ascribed 4 features. A Wickelfeature is a combination of 3 sequential features.
 
 Rumelhart and McClelland used Wickelfeatures as input units for their neural network.
+
+I've adapted Rumelhart and McClelland's table to the Portuguese Language:
+
+
+|       |        |       |     | Place  |     |      |     |
+|-------|--------|-------|-----|--------|-----|------|-----|
+|       |        | Front |     | Middle |     | Back |     |
+|       |        | V/L   | U/S | V/L    | U/S | V/L  | U/S |
+| Int   | Stop   | b     | p   | d      | t   | g    | k   |
+|       | Nasal  | m     | _   | n      | _   | N    | _   |
+| Cont  | Fric   | d   | T | z      | s   | Z/j  | S/C |
+|       | Liq/SV | w/l   | _   | r      | _   | y    | h   |
+| Vowel | High   | E     | i   | O      |    | U    | u   |
+|       | Low    | A     | e   | I      | a   | W    | o   |
 
 # The Corpus
 
@@ -60,7 +74,18 @@ The [code](https://github.com/beatrizalbiero/MsResearch/blob/master/Wickelfeatur
 To build this [net](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/network.py), I've used the API [KERAS](https://keras.io/)
 
 
-
 # Jupyter Notebook of my net with premilinar results:
 
 A preview of my experiments and results can be found [here](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/Network.ipynb)!
+
+# The N-grams Net
+
+Developing the network scheme proposed by the authors proved to be a very difficult task for the Portuguese language since the lengths of such verbs are considerably longer.
+
+For this reason, I've tried a different approach. I've kept the same network scheme but I've changed the net's goal. Instead of trying to find patterns among features, this different net tries to find patterns among trigrams of phonemes.
+
+Results of this experiment can be found [here](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/Network-NGrams.ipynb).
+
+# TODO
+
+I am currently working on a different strategy. Since both nets I've built have not proven to be highly efficient, my next guess is that a LSTM net should easily solve this problem.
