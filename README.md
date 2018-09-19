@@ -74,7 +74,7 @@ The [code](https://github.com/beatrizalbiero/MsResearch/blob/master/Wickelfeatur
 To build this [net](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/network.py), I've used the API [KERAS](https://keras.io/)
 
 
-# Jupyter Notebook of my net with premilinar results:
+# Wickelfeatures Net Results:
 
 A preview of my experiments and results can be found [here](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/Network.ipynb)!
 
@@ -86,6 +86,6 @@ For this reason, I've tried a different approach. I've kept the same network sch
 
 Results of this experiment can be found [here](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/Network-NGrams.ipynb).
 
-# TODO
+# Encoder-Decoder
 
-I am currently working on a different strategy. Since both nets I've built have not proven to be highly efficient, my next guess is that a LSTM net should easily solve this problem.
+Experiments with Encoder-Decoder's: [here](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/models_comparison.ipynb)
