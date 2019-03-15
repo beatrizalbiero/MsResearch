@@ -14,6 +14,8 @@ In the chapter "On learning the past tense of English verbs", Rumelhart and McCl
 
 All the necessary information about the corpus can be found [here](https://github.com/beatrizalbiero/MsResearch/tree/master/WickelfeaturesProject/Corpus).
 
+**TODO:** Update information about the new Corpus.
+
 # The Wickelfeatures Net
 
 This is the net scheme that I've built to predict conjugations for Brazilian Portuguese. (present - first person)
