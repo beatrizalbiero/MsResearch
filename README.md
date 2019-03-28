@@ -10,82 +10,21 @@ The authors' theory assumes the mind is composed of a great number of elementary
 
 In the chapter "On learning the past tense of English verbs", Rumelhart and McClelland describe an experiment in which a feedforward neural network was developed in order to find patterns among phonological features between present and past tense forms of English verbs.
 
-# Wickelfeatures - Units
-
-A phoneme can be described as any of the perceptually distinct units of sound in a specified language that distinguish one word from another, for example p, b, d, and t in the English words pad, pat, bad, and bat.
-
-Each phoneme has its own phonological features. According to Rumelhart and McClelland's description, the phoneme 'd', for example, can be characterized by a set of 4 features (considering 4 different dimensions in a simplified phonetic table described by the authors):  
-
-  - Interrupted
-  - Stop
-  - Middle
-  - Voiced
-
-|       |        |       |     | Place  |     |      |     |
-|-------|--------|-------|-----|--------|-----|------|-----|
-|       |        | Front |     | Middle |     | Back |     |
-|       |        | V/L   | U/S | V/L    | U/S | V/L  | U/S |
-| Int   | Stop   | b     | p   | d      | t   | g    | k   |
-|       | Nasal  | m     | _   | n      | _   | N    | _   |
-| Cont  | Fric   | v/D   | f/T | z      | s   | Z/j  | S/C |
-|       | Liq/SV | l   | _   | r      | _   | y    | h   |
-| Vowel | High   | e     | i   |       | ^   | u    | u   |
-|       | Low    |      | E   |       | a   |     | O   |
-
-
-In a trigram of phonemes, each phoneme may be ascribed 4 features. A Wickelfeature is a combination of 3 sequential features.
-
-Rumelhart and McClelland used Wickelfeatures as input units for their neural network.
-
-I've adapted Rumelhart and McClelland's table to the Portuguese Language:
-
-
-|       |        |       |     | Place  |     |      |     |
-|-------|--------|-------|-----|--------|-----|------|-----|
-|       |        | Front |     | Middle |     | Back |     |
-|       |        | V/L   | U/S | V/L    | U/S | V/L  | U/S |
-| Int   | Stop   | b     | p   | d      | t   | g    | k   |
-|       | Nasal  | m     | _   | n      | _   | N    | _   |
-| Cont  | Fric   | d   | T | z      | s   | Z/j  | S/C |
-|       | Liq/SV | w/l   | _   | r      | _   | y    | h   |
-| Vowel | High   | E     | i   | O      |    | U    | u   |
-|       | Low    | A     | e   | I      | a   | W    | o   |
-
-# The Corpus
+# The Corpus 
 
 All the necessary information about the corpus can be found [here](https://github.com/beatrizalbiero/MsResearch/tree/master/WickelfeaturesProject/Corpus).
+
+**TODO:** Update information about the new Corpus.
 
 # The Wickelfeatures Net
 
 This is the net scheme that I've built to predict conjugations for Brazilian Portuguese. (present - first person)
+In this net, I've used the same network architecture as researchers Rumelhart and McClelland did.
 <br/><br/>
 ![alt text](https://user-images.githubusercontent.com/31517216/32189712-ba7451a0-bd92-11e7-92fa-b332c58cc962.png)
 
-# The Wickelfeatures Encoding Function
-
-The [code](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/coding_function.py) for how I've turned verbs into Wickelfeatures.
-
-# The Decoding/Binding Function
-
-The [code](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/decoding2.py) for how I've tried to decode Wickelfeatures back into verbs.
-
-# The Wickelfeatures Net
-
-To build this [net](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/network.py), I've used the API [KERAS](https://keras.io/)
-
-
-# Wickelfeatures Net Results:
-
-A preview of my experiments and results can be found [here](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/Network.ipynb)!
-
-# The N-grams Net
-
-Developing the network scheme proposed by the authors proved to be a very difficult task for the Portuguese language since the lengths of such verbs are considerably longer.
-
-For this reason, I've tried a different approach. I've kept the same network scheme but I've changed the net's goal. Instead of trying to find patterns among features, this different net tries to find patterns among trigrams of phonemes.
-
-Results of this experiment can be found [here](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/Network-NGrams.ipynb).
+To build this [net](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/Network.ipynb), I've used the API [KERAS](https://keras.io/)
 
 # Encoder-Decoder
 
-Experiments with Encoder-Decoder's: [here](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/models_comparison.ipynb)
+I'm currently studying the same task with an [encoder-decoder](https://github.com/beatrizalbiero/MsResearch/blob/master/input_features.ipynb) architecture.
