@@ -83,7 +83,7 @@
 81,konversa,$konvErsu#,class__testar
 82,fexa,$fExu#,class__testar
 83,espresa,$esprEsu#,class__testar
-84,olia,$Oliu#,class__botar
+84,oLa,$OLu#,class__botar
 85,koloka,$kolOku#,class__botar
 86,informa,$infOrmu#,class__botar
 87,torna,$tOrnu#,class__botar
@@ -109,8 +109,8 @@
 107,posta,$pOstu#,class__botar
 108,joga,$jOgu#,class__botar
 109,akorda,$akOrdu#,class__botar
-110, #korta#',$ #kOrtu#,class__botar
-111, #aumosa,$aumOsu#,class__botar
+110,korta,$kOrtu#,class__botar
+111,aumosa,$aumOsu#,class__botar
 112,gosta,$gOstu#,class__botar
 113,volta,$vOltu#,class__botar
 114,perfaze,$perfasu#,class__fazer
@@ -204,7 +204,7 @@
 202,p3nsa,$p3nsu#,class__regular
 203,ezisti,$ezistu#,class__regular
 204,sakudi,$sakudu#,class__regular
-205,trabalia,$trabaliu#,class__regular
+205,trabaLa,$trabaLu#,class__regular
 206,asisti,$asistu#,class__regular
 207,subimete,$subimetu#,class__regular
 208,at3nde,$at3ndu#,class__regular
@@ -212,7 +212,7 @@
 210,surji,$surju#,class__regular
 211,prokura,$prokuru#,class__regular
 212,friji,$friju#,class__regular
-213,kaminia,$kamiNu#,class__regular
+213,kamiNa,$kamiNu#,class__regular
 214,marka,$marku#,class__regular
 215,eskese,$eskesu#,class__regular
 216,t3nta,$t3ntu#,class__regular
@@ -229,7 +229,7 @@
 227,sede,$sedu#,class__regular
 228,buska,$busku#,class__regular
 229,eskreve,$eskrevu#,class__regular
-230,3nkaminiar,$3nkamiNu#,class__regular
+230,3nkamiNar,$3nkamiNu#,class__regular
 231,kumpri,$kumpru#,class__regular
 232,ama,$amu#,class__regular
 233,ajuda,$ajudu#,class__regular
@@ -246,8 +246,8 @@
 244,inisia,$inisiu#,class__regular
 245,dAnsa,$dAnsu#,class__regular
 246,3nkontra,$3nkontru#,class__regular
-247,soniar,$soNu#,class__regular
-248,kompartilia,$kompartiliu#,class__regular
+247,soNar,$soNu#,class__regular
+248,kompartiLa,$kompartiLu#,class__regular
 249,apr3nde,$apr3ndu#,class__regular
 250,aviza,$avizu#,class__regular
 251,3nt3nde,$3nt3ndu#,class__regular
@@ -259,7 +259,7 @@
 257,murxa,$murxu#,class__regular
 258,hi,$hiu#,class__regular
 259,inkohe,$inkohu#,class__regular
-260,mobiliar,$mobiliu#,class__regular
+260,mobiLa,$mobiLu#,class__regular
 261,buli,$bulu#,class__regular
 262,fuji,$fuju#,class__regular
 263,adiverti,$adivertu#,class__regular
@@ -304,7 +304,7 @@
 302,fartar,$fartu#,class__regular
 303,trai,$traiu#,class__regular
 304,mingua,$minguu#,class__regular
-305,desmobilia,$desmobiliu#,class__regular
+305,desmobiLa,$desmobiLu#,class__regular
 306,sohi,$sohiu#,class__regular
 307,perverte,$pervertu#,class__regular
 308,preklui,$prekluu#,class__regular
@@ -327,7 +327,7 @@
 325,imerji,$imerju#,class__regular
 326,subimerji,$subimerju#,class__regular
 327,b3nze,$b3nzu#,class__regular
-328,gAnia,$gAnu#,class__regular
+328,gANa,$gANu#,class__regular
 329,aseita,$aseitu#,class__regular
 330,konfuji,$konfuju#,class__regular
 331,segura,$seguru#,class__regular
@@ -341,7 +341,7 @@
 339,paga,$pagu#,class__regular
 340,sai,$saiu#,class__regular
 341,bate,$batu#,class__regular
-342,eskolie,$eskoliu#,class__regular
+342,eskolie,$eskoLu#,class__regular
 343,impedi,$impEsu#,class__pedir
 344,pedi,$pEsu#,class__pedir
 345,dezimpedi,$dezimpEsu#,class__pedir
