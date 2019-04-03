@@ -27,4 +27,4 @@ To build this [net](https://github.com/beatrizalbiero/MsResearch/blob/master/Wic
 
 # Encoder-Decoder
 
-I'm currently studying the same task with an [encoder-decoder](https://github.com/beatrizalbiero/MsResearch/blob/master/input_features.ipynb) architecture.
+I'm currently studying the same task with an [encoder-decoder](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/encoder-decoder.ipynb) architecture.
