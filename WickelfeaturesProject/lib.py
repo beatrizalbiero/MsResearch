@@ -14,6 +14,9 @@ import keras.backend as K
 from sklearn.metrics import f1_score
 from sklearn.model_selection import StratifiedKFold
 from scipy.spatial import distance
+from itertools import islice, tee
+import itertools
+import collections
 opt = adam()
 
 with open('Files/phones.pickle', 'rb') as file:
@@ -114,9 +117,8 @@ def preprocessing(corpus):
     padded_in = pad_sequences(coded_in, value=np.zeros(21))
     padded_out = pad_sequences(coded_out, value=np.zeros(21),padding="post")
     padded_out_target = pad_sequences(coded_out_target, value=np.zeros(21),padding="post")
-    omega = 2*padded_out.mean(axis=0).mean(axis=0) + 0.001
         
-    return coded_in, coded_out, padded_in, padded_out, padded_out_target, omega
+    return coded_in, coded_out, padded_in, padded_out, padded_out_target
 
 def find_closest_array(predicted):
     """
@@ -146,7 +148,7 @@ def find_closest_array(predicted):
     return candidate
 
 
-def decode_sequence(input_seq, encoder, decoder, omega, renormalize):
+def decode_sequence(input_seq, encoder, decoder, renormalize):
     """
     Decode a whole sequence of predicted vectors of features into a verb.
     
@@ -207,7 +209,7 @@ def decode_sequence(input_seq, encoder, decoder, omega, renormalize):
     return fts, decoded_verb[:-1]
 
 
-def decode_sequences(seq, encoder, decoder, omega, renormalize):
+def decode_sequences(seq, encoder, decoder, renormalize):
     """
     Decode a batch of predicted vectors of features into a verb.
     
@@ -224,9 +226,9 @@ def decode_sequences(seq, encoder, decoder, omega, renormalize):
     decoded_verb : str
     """
     if len(seq.shape) == 3:
-        return zip(*[decode_sequence(s.reshape(1,*s.shape), encoder, decoder,omega, renormalize) for s in seq])
+        return zip(*[decode_sequence(s.reshape(1,*s.shape), encoder, decoder, renormalize) for s in seq])
     else:  
-        fts, decoded_verb = decode_sequence(seq.reshape(1,*seq.shape), encoder, decoder, omega, renormalize) 
+        fts, decoded_verb = decode_sequence(seq.reshape(1,*seq.shape), encoder, decoder, renormalize) 
     return fts, decoded_verb
 
     
@@ -246,8 +248,8 @@ def decode_from_df_and_models(df, encoder, decoder, renormalize):
     --------
     res : pandas df
     """
-    coded_in, coded_out, padded_in, padded_out, padded_out_target, omega = preprocessing(df)
-    fts, decoded_seqs = decode_sequences(padded_in, encoder, decoder, omega, renormalize) 
+    coded_in, coded_out, padded_in, padded_out, padded_out_target = preprocessing(df)
+    fts, decoded_seqs = decode_sequences(padded_in, encoder, decoder, renormalize) 
     res = pd.DataFrame(decoded_seqs, index=df.iloc[:,0].tolist()).reset_index()
     res.columns = ['v_inf', 'predicted']
     res = pd.merge(res, df, on='v_inf', how='inner')
@@ -276,7 +278,7 @@ def train(data, epochs, length=None, verbose=False, latent_dim=256, NUM_ENCODER_
     decoder_from_df : function with pre parametrized encoder and decoder
     history : list (obtained from fit)
     """
-    coded_in, coded_out, padded_in, padded_out, padded_out_target, omega = preprocessing(data)
+    coded_in, coded_out, padded_in, padded_out, padded_out_target = preprocessing(data)
     if length==None: length=len(padded_in)
         
     # Define an input sequence and process it.
@@ -379,3 +381,53 @@ def kfold(corpus, n, renorm=False):
         all_decodings = all_decodings.append(decoded)
         
     return all_decodings
+
+def trigramizer(verb):
+    """
+    Trigramizer.
+
+    This procedure receives a verb and returns a list of all trigrams.
+
+    :type verb: str
+    :rtype: list
+    """
+    N = 3
+    trigrams = zip(*(islice(seq, index, None) for index, seq in enumerate(tee(verb, N))))        
+    return [''.join(item) for item in list(trigrams)]
+
+def perplexity(series):
+    """
+    Calculates the perplexity for a give series.
+    
+    Parameters:
+    -----------
+    series : pd series
+    
+    Returns:
+    --------
+    perplexity : float
+    """
+    trigrams = []
+    for word in series:    
+        trigrams.append(trigramizer(word))
+    trigrams = list(itertools.chain(*trigrams))
+    model = collections.defaultdict(lambda: 0.01)
+    for f in trigrams:
+        try:
+            model[f] += 1
+        except KeyError:
+            model [f] = 1
+            continue
+    for word in model:
+        model[word] = model[word]/float(sum(model.values()))
+    #return model
+        
+    perplexity = 1
+    N = 0
+    for word in series:
+        tri_word = trigramizer(word)
+        for tri in tri_word:
+            N += 1
+            perplexity = perplexity * (1/model[word])
+            perplexity = pow(perplexity, 1/float(N)) 
+    return perplexity
