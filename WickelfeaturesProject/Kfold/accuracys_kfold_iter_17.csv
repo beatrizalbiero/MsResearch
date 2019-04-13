@@ -1,0 +1,17 @@
+class,correct,total,accuracy,proportion_in_corpus
+class__ansiar,1,9,0.11,2.13
+class__botar,6,30,0.2,7.09
+class__cobrir,1,7,0.14,1.65
+class__dizer,0,7,0.0,1.65
+class__fazer,3,15,0.2,3.55
+class__ler,0,5,0.0,1.18
+class__mentir,1,8,0.12,1.89
+class__none,1,20,0.05,4.73
+class__pedir,0,7,0.0,1.65
+class__por,0,27,0.0,6.38
+class__regular,37,214,0.17,50.59
+class__seguir,4,27,0.15,6.38
+class__ter,1,10,0.1,2.36
+class__testar,0,20,0.0,4.73
+class__ver,0,6,0.0,1.42
+class__vir,0,11,0.0,2.6

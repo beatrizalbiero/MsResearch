@@ -226,6 +226,7 @@ def decode_sequences(seq, encoder, decoder, renormalize):
     decoded_verb : str
     """
     if len(seq.shape) == 3:
+        #print(seq.shape)
         return zip(*[decode_sequence(s.reshape(1,*s.shape), encoder, decoder, renormalize) for s in seq])
     else:  
         fts, decoded_verb = decode_sequence(seq.reshape(1,*seq.shape), encoder, decoder, renormalize) 
@@ -379,8 +380,30 @@ def kfold(corpus, n, renorm=False):
         decoded = decoder(corpus_test, renormalize=renorm)
 
         all_decodings = all_decodings.append(decoded)
+        all_decodings = all_decodings.sort_values('class')
         
     return all_decodings
+
+
+def mult_kfold(corpus, n, renorm, num):
+    
+    total_per_class = corpus.groupby('class').count().v_inf
+    proportions = corpus.groupby('class').count().apply(lambda g: round((g / g.sum())*100, 2)).iloc[:,0]
+
+    for i in range(num):
+        kfoldi = kfold(corpus, n, renorm)
+        kfoldi.to_csv("Files/kfold_" + str(i) + ".csv", index=None)
+        kfoldi['correct'] = np.where((kfoldi['predicted'] == kfoldi['target']) , 1, 0)
+        results = pd.concat([kfoldi.groupby('class').sum(), proportions], axis=1)
+        results.columns = ['correct', 'proportion_in_corpus']
+        results['total'] = total_per_class
+        results['accuracy'] = results.correct.divide(total_per_class)
+        results = results[['correct', 'total', 'accuracy', 'proportion_in_corpus']]
+        results['accuracy'] = results.accuracy.apply(lambda x: round(x, 2))
+        results.sort_values('proportion_in_corpus', ascending=False)
+        results.to_csv('Kfold/accuracys_kfold_iter_' + str(i) + '.csv')
+        
+        
 
 def trigramizer(verb):
     """
