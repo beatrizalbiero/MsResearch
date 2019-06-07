@@ -6,6 +6,8 @@ from keras.preprocessing.sequence import pad_sequences
 from keras.models import Model, load_model
 from keras.layers import Input, LSTM, Dense, Masking
 import matplotlib
+from datetime import datetime
+from matplotlib.pyplot import savefig
 import matplotlib.pyplot as plt
 from keras.callbacks import ModelCheckpoint
 from keras_metrics import KerasMetrics
@@ -15,8 +17,11 @@ from sklearn.metrics import f1_score
 from sklearn.model_selection import StratifiedKFold
 from scipy.spatial import distance
 from itertools import islice, tee
+import datetime
 import itertools
 import collections
+from collections import Counter
+from imblearn.over_sampling import RandomOverSampler 
 opt = adam()
 
 with open('Files/phones.pickle', 'rb') as file:
@@ -260,7 +265,7 @@ def decode_from_df_and_models(df, encoder, decoder, renormalize):
     return  res
     #return fts 03/04
 
-def train(data, epochs, length=None, verbose=False, latent_dim=256, NUM_ENCODER_TOKENS=21):
+def train(data, epochs, validation_split=0.2, validation_data=None, length=None, verbose=False, latent_dim=256, NUM_ENCODER_TOKENS=21):
     """
    Train the encoder decoder model.
     
@@ -328,11 +333,14 @@ def train(data, epochs, length=None, verbose=False, latent_dim=256, NUM_ENCODER_
                    keras_metrics.recall,
                    keras_metrics.precision]) 
     
+    
     history = model.fit([padded_in[:length], padded_out[:length]],
                         padded_out_target[:length],
                         batch_size=128,
                         epochs=epochs,
-                        validation_split=0.2,verbose=verbose)
+                        validation_split=validation_split, 
+                        validation_data=validation_data, 
+                        verbose=verbose)
         
     return model, decoder_from_df, history
 
@@ -367,18 +375,50 @@ def plot_results(history):
     plt.subplot(1,4,4)
     plot(history, 'loss')
     
+    date_time = datetime.datetime.now().strftime("%m-%d-%Y_%H:%M:%S")
+    title = "img/train_" + date_time
+    savefig(title)
+    
 
-def kfold(corpus, n, renorm=False):
+def kfold(corpus, n, epochs=300, oversampling=False, renorm=False):
     cv = StratifiedKFold(n)
 
     all_decodings = pd.DataFrame()
     for i_train, i_test in cv.split(corpus, y=corpus['class']):
         corpus_train, corpus_test = corpus.iloc[i_train], corpus.iloc[i_test]
         print(corpus_train.shape, corpus_test.shape)
+        
+        if oversampling == False:
+            model, decoder, history = train(corpus_train, epochs)
+            decoded = decoder(corpus_test, renormalize=renorm)
+        else:
+            # oversampling no treino
+            print("oversampling")
+            corpus_train["X"] = corpus_train.v_inf + "&" + corpus_train.v_conj
+            X = np.array(corpus_train.X)
+            X = X.reshape(-1,1)
+            y = np.array(corpus_train["class"])
+            y.reshape(-1,1)
+            ros = RandomOverSampler(random_state=0)
+            X_res, y_res = ros.fit_resample(X, corpus_train["class"].array)
+            print('Resampled dataset shape %s\n' % Counter(y_res)["class__ver"])
+            X_res = X_res.reshape(16*Counter(y_res)["class__ver"],).tolist()
+            
+            print("creating resampled dataset")
+            resampled = pd.DataFrame(X_res, columns=["X_res"], index=None) 
+            resampled[['v_inf','v_conj']] = resampled.X_res.str.split("&",expand=True,)
+            resampled["class"] = y_res
+            resampled.drop(["X_res"],axis=1, inplace=True)
+            
+            print("preprocessing validation data")
+            _, _, padded_in_test, padded_out_test, padded_out_target_test = preprocessing(corpus_test)
 
-        model, decoder,  _ = train(corpus_train, epochs=300)
-        decoded = decoder(corpus_test, renormalize=renorm)
-
+            print("begin training")
+            validation_data = ([padded_in_test, padded_out_test], padded_out_target_test)
+            model, decoder, history = train(resampled, epochs, validation_data=validation_data)
+            decoded = decoder(corpus_test, renormalize=renorm)
+        
+        plot_results(history)
         all_decodings = all_decodings.append(decoded)
         all_decodings = all_decodings.sort_values('class')
         
