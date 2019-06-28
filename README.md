@@ -12,9 +12,9 @@ In the chapter "On learning the past tense of English verbs", Rumelhart and McCl
 
 # My Project
 
-V.1 of this project was an attempt of reproducing the same experiment using the same archtecture as the authors (a Feed Forward Network). [See Results](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/Network.ipynb)
+V.1 of this project was an attempt of reproducing the same experiment using the same architecture as the authors (a Feed Forward Network). [See Results](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/Network.ipynb)
 
-V.2 approches this same challenge with the help of a much modern archtecture, the enconder-decoder. [See Results](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/encoder-decoder.ipynb)
+V.2 approches this same challenge with the help of a much modern architecture, the enconder-decoder. [See Results](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/encoder-decoder.ipynb)
 
 # The Corpus 
 
