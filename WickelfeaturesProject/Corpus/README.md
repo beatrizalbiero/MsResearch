@@ -16,6 +16,10 @@
 |:----------:|-------------|--------------|--------------|-------------|--------------|
 |     27     | 27          | 10           | 20           | 6           | 11           |
 
+# Phonetic Keys for Transcription
+
+![Table](https://github.com/beatrizalbiero/MsResearch/blob/master/WickelfeaturesProject/img/Screen%20Shot%202019-06-28%20at%2012.28.44.png)
+
 ## Non-Family Verbs - Total: 20
 
 requerer -> requero
